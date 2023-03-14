@@ -1,0 +1,131 @@
+﻿<Page x:Class="YP_2.PageMainMenu"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:YP_2"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Абоненты">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="5*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="3*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+
+        <StackPanel Grid.Column="0" Grid.Row="0"  Grid.RowSpan="2">
+            <Image Width="80"  Source="/resources/Лого ТНС.jpg"></Image>
+            <Image Name="ImgAbon" Width="80" Height="50"  Source="/resources/Абоненты.png"></Image>
+
+
+            <Image Name="ImgObor" Width="80" Height="50"  Source="/resources/Управление обрудованием.jpg"></Image>
+            <Image Name="ImgActiv" Width="80" Height="50"  Source="/resources/Активы.png"></Image>
+            <Image Name="ImgBilling" Width="80" Height="50"  Source="/resources/Биллинг.jpg"></Image>
+            <Image Name="ImgPodder" Width="80" Height="50"  Source="/resources/Поддержка пользователей.jpg"></Image>
+            <Image Name="ImgCRM" Width="80" Height="50"  Source="/resources/CRM.png"></Image>
+
+            <Button x:Name="btnproa" Height="30" Width="30" Background="Transparent" BorderThickness="0" BorderBrush="Gray" >
+                <Button.Content>
+                    <Border CornerRadius="15" Background="Gray" Height="25" Width="25" Margin="0" BorderBrush="Gray" >
+                        <TextBlock Text="проф." FontSize="8" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </Button.Content>
+            </Button>
+
+            <Button   x:Name="btnvopr" Height="30" Width="30" Background="Transparent" BorderThickness="0" BorderBrush="Gray">
+                <Button.Content>
+                    <Border CornerRadius="15" Background="Gray" Height="25" Width="25" Margin="0" BorderBrush="Gray" >
+                        <TextBlock Text="?" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </Button.Content>
+            </Button>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2">
+            <TextBlock FontSize="30" VerticalAlignment="Center" Margin="10,0,0,0" Name="TextName">Абоненты ТНС</TextBlock>
+            <ComboBox Margin="20,0,0,0" SelectionChanged="ComboEmployes_SelectionChanged" Height="20" Width="200" Name="ComboEmployes"></ComboBox>
+            <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
+                
+                    <Ellipse Width="50" Height="50"  >
+                        <Ellipse.Fill>
+                            <ImageBrush x:Name="ImageEmployee"  Stretch="UniformToFill"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+
+                
+            </StackPanel>
+            
+        </StackPanel>
+        <StackPanel Grid.Row="0" Grid.Column="2" VerticalAlignment="Bottom">
+            <StackPanel Background="#FFEAEAEA" >
+                <TextBlock FontSize="20" HorizontalAlignment="Center">События</TextBlock>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Column="2" Grid.Row="1" Grid.RowSpan="3" Background="#FFEAEAEA">
+            <StackPanel Name="ButtonForward" MouseDown="ButtonForward_MouseDown">
+                <Polyline Stroke="Black" Points="0, 15, 15, 5, 30, 15" HorizontalAlignment="Center"/>
+            </StackPanel>
+            
+            <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" Name="ListEvents">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Background="Gray" Width="200" HorizontalAlignment="Center" >
+                            <TextBlock Text="{Binding information}" HorizontalAlignment="Center"  ></TextBlock>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <StackPanel Name="ButtonBackward" MouseDown="ButtonBackward_MouseDown">
+                <Polyline x:Name="btnDown" Stroke="Black" Points="0, 15, 15, 25, 30, 15" HorizontalAlignment="Center"/>
+            </StackPanel>
+            
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel>
+                    <TextBlock>Фамилия</TextBlock>
+                    <TextBox Name="TextBoxSurname"></TextBox>
+                </StackPanel>
+                <StackPanel Margin="10,0,0,0">
+                    <TextBlock>Район</TextBlock>
+                    <ComboBox Name="ComboBoxRaion"></ComboBox>
+                </StackPanel>
+                <StackPanel Margin="10,0,0,0">
+                    <TextBlock>Улица</TextBlock>
+                    <ComboBox Name="ComboBoxYlitsa"></ComboBox>
+                </StackPanel>
+                <StackPanel Margin="10,0,0,0">
+                    <TextBlock>Номер дома</TextBlock>
+                    <ComboBox Name="ComboBoxDom"></ComboBox>
+                </StackPanel>
+                <StackPanel Margin="10,0,0,0">
+                    <TextBlock>ЛС</TextBlock>
+                    <TextBox Name="TextBoxLichSchet"></TextBox>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel>
+                <DataGrid Name="GridSubscription">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Номер" Binding="{Binding subscriber_number}" Width="1*"></DataGridTextColumn>
+                        <DataGridTextColumn Header="ФИО" Binding="{Binding FIO}" Width="2*"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Номер договора" Binding="{Binding contract_number}" Width="2*"></DataGridTextColumn>
+                        <DataGridTextColumn Header="ЛС" Binding="{Binding  personal_account}" Width="1*"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Услуги" Binding="{Binding  ListServices}" Width="2*"></DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Name="CheckBoxActiv" Content="Активные"></CheckBox>
+                <CheckBox Name="CheckBoxNoActiv"  Content="Неактивные"></CheckBox>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

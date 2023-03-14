@@ -4,43 +4,44 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="5a29f48b805e43c682f7bc362acb9e64" Name="Diagram1">
-        <EntityTypeShape EntityType="CRM12Model.AccessNetworks" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CRM12Model.Applications" Width="1.5" PointX="3" PointY="2.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="CRM12Model.BuildingType" Width="1.5" PointX="1.5" PointY="34.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CRM12Model.ContractTypes" Width="1.5" PointX="1.5" PointY="29" IsExpanded="true" />
-        <EntityTypeShape EntityType="CRM12Model.DescriptionsProblems" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="CRM12Model.Districts" Width="1.5" PointX="1.5" PointY="31.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="CRM12Model.Employees" Width="1.5" PointX="8" PointY="7" IsExpanded="true" />
-        <EntityTypeShape EntityType="CRM12Model.Equipment" Width="1.5" PointX="1.5" PointY="37.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CRM12Model.Highways" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CRM12Model.InformationForEmployees" Width="1.5" PointX="10.25" PointY="7.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CRM12Model.Pols" Width="1.5" PointX="1.5" PointY="40.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="CRM12Model.ProblemTypes" Width="1.5" PointX="0.75" PointY="9.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CRM12Model.Roles" Width="1.5" PointX="5.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CRM12Model.Services" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="CRM12Model.ServicesTypes" Width="1.5" PointX="0.75" PointY="11.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="CRM12Model.ServicesView" Width="1.5" PointX="0.75" PointY="14.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="CRM12Model.Statuses" Width="1.5" PointX="0.75" PointY="16.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CRM12Model.Subscribers" Width="1.5" PointX="0.75" PointY="20.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="CRM12Model.SubscriberServices" Width="1.5" PointX="6" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="CRM12Model.sysdiagrams" Width="1.5" PointX="2.75" PointY="8.75" IsExpanded="true" />
-        <AssociationConnector Association="CRM12Model.FK_Applications_DescriptionsProblems" ManuallyRouted="false" />
-        <AssociationConnector Association="CRM12Model.FK_Applications_ProblemTypes" ManuallyRouted="false" />
-        <AssociationConnector Association="CRM12Model.FK_Applications_Services" ManuallyRouted="false" />
-        <AssociationConnector Association="CRM12Model.FK_Applications_ServicesTypes" ManuallyRouted="false" />
-        <AssociationConnector Association="CRM12Model.FK_Applications_ServicesView" ManuallyRouted="false" />
-        <AssociationConnector Association="CRM12Model.FK_Applications_Statuses" ManuallyRouted="false" />
-        <AssociationConnector Association="CRM12Model.FK_Applications_subscribers" ManuallyRouted="false" />
-        <AssociationConnector Association="CRM12Model.FK_Districts_BuildingType" ManuallyRouted="false" />
-        <AssociationConnector Association="CRM12Model.FK_subscribers_ContractTypes" ManuallyRouted="false" />
-        <AssociationConnector Association="CRM12Model.FK_subscribers_Districts" ManuallyRouted="false" />
-        <AssociationConnector Association="CRM12Model.FK_Employees_Roles" ManuallyRouted="false" />
-        <AssociationConnector Association="CRM12Model.FK_InformationForEmployees_Employees" ManuallyRouted="false" />
-        <AssociationConnector Association="CRM12Model.FK_subscribers_Equipment" ManuallyRouted="false" />
-        <AssociationConnector Association="CRM12Model.FK_subscribers_Pols" ManuallyRouted="false" />
-        <AssociationConnector Association="CRM12Model.FK_SubscriberServices_Services" ManuallyRouted="false" />
-        <AssociationConnector Association="CRM12Model.FK_SubscriberServices_Subscribers" ManuallyRouted="false" />
+      <Diagram DiagramId="5a29f48b805e43c682f7bc362acb9e64" Name="Diagram1" ZoomLevel="25">
+        <EntityTypeShape EntityType="CRM12Model.AccessNetworks" Width="1.5" PointX="5.75" PointY="1.875" />
+        <EntityTypeShape EntityType="CRM12Model.Applications" Width="1.5" PointX="3" PointY="3.75" />
+        <EntityTypeShape EntityType="CRM12Model.BuildingType" Width="1.5" PointX="1.5" PointY="23.625" />
+        <EntityTypeShape EntityType="CRM12Model.ContractTypes" Width="1.5" PointX="1.5" PointY="26.375" />
+        <EntityTypeShape EntityType="CRM12Model.DescriptionsProblems" Width="1.5" PointX="0.75" PointY="38.375" />
+        <EntityTypeShape EntityType="CRM12Model.Districts" Width="1.5" PointX="1.5" PointY="20.125" />
+        <EntityTypeShape EntityType="CRM12Model.Employees" Width="1.5" PointX="8" PointY="8.125" />
+        <EntityTypeShape EntityType="CRM12Model.Equipment" Width="1.5" PointX="1.5" PointY="28.75" />
+        <EntityTypeShape EntityType="CRM12Model.Highways" Width="1.5" PointX="7.75" PointY="1.875" />
+        <EntityTypeShape EntityType="CRM12Model.InformationForEmployees" Width="1.5" PointX="10.25" PointY="8.75" />
+        <EntityTypeShape EntityType="CRM12Model.Pols" Width="1.5" PointX="1.5" PointY="0.75" />
+        <EntityTypeShape EntityType="CRM12Model.ProblemTypes" Width="1.5" PointX="0.75" PointY="36" />
+        <EntityTypeShape EntityType="CRM12Model.Roles" Width="1.5" PointX="5.75" PointY="8.875" />
+        <EntityTypeShape EntityType="CRM12Model.Services" Width="1.5" PointX="0.75" PointY="5.125" />
+        <EntityTypeShape EntityType="CRM12Model.ServicesTypes" Width="1.5" PointX="0.75" PointY="33.625" />
+        <EntityTypeShape EntityType="CRM12Model.ServicesView" Width="1.5" PointX="0.75" PointY="8.375" />
+        <EntityTypeShape EntityType="CRM12Model.Statuses" Width="1.5" PointX="0.75" PointY="31.25" />
+        <EntityTypeShape EntityType="CRM12Model.Subscribers" Width="1.5" PointX="0.75" PointY="12.25" />
+        <EntityTypeShape EntityType="CRM12Model.SubscriberServices" Width="1.5" PointX="6" PointY="5.125" />
+        <EntityTypeShape EntityType="CRM12Model.sysdiagrams" Width="1.5" PointX="2.75" PointY="9.875" />
+        <EntityTypeShape EntityType="CRM12Model.TableEquipment" Width="1.5" PointX="8.75" PointY="4.875" />
+        <AssociationConnector Association="CRM12Model.FK_Applications_DescriptionsProblems" />
+        <AssociationConnector Association="CRM12Model.FK_Applications_ProblemTypes" />
+        <AssociationConnector Association="CRM12Model.FK_Applications_Services" />
+        <AssociationConnector Association="CRM12Model.FK_Applications_ServicesTypes" />
+        <AssociationConnector Association="CRM12Model.FK_Applications_ServicesView" />
+        <AssociationConnector Association="CRM12Model.FK_Applications_Statuses" />
+        <AssociationConnector Association="CRM12Model.FK_Applications_subscribers" />
+        <AssociationConnector Association="CRM12Model.FK_Districts_BuildingType" />
+        <AssociationConnector Association="CRM12Model.FK_subscribers_ContractTypes" />
+        <AssociationConnector Association="CRM12Model.FK_subscribers_Districts" />
+        <AssociationConnector Association="CRM12Model.FK_Employees_Roles" />
+        <AssociationConnector Association="CRM12Model.FK_InformationForEmployees_Employees" />
+        <AssociationConnector Association="CRM12Model.FK_subscribers_Equipment" />
+        <AssociationConnector Association="CRM12Model.FK_subscribers_Pols" />
+        <AssociationConnector Association="CRM12Model.FK_SubscriberServices_Services" />
+        <AssociationConnector Association="CRM12Model.FK_SubscriberServices_Subscribers" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

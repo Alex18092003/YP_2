@@ -26,6 +26,7 @@ namespace YP_2
             ClassBase.entities = new Entities();
             ClassFrame.frame = frame;
             ClassFrame.frame.Navigate(new PageMainMenu());
+            
         }
     }
 }

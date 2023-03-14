@@ -12,13 +12,10 @@ namespace YP_2
     using System;
     using System.Collections.Generic;
     
-    public partial class InformationForEmployees
+    public partial class TableEquipment
     {
-        public int kod_information { get; set; }
-        public int kod_employees { get; set; }
-        public string information { get; set; }
-        public Nullable<System.DateTime> event_data { get; set; }
-    
-        public virtual Employees Employees { get; set; }
+        public int EquipmentID { get; set; }
+        public string EquipmentSerialNumber { get; set; }
+        public string EquipmentName { get; set; }
     }
 }

@@ -45,5 +45,6 @@ namespace YP_2
         public virtual DbSet<Subscribers> Subscribers { get; set; }
         public virtual DbSet<SubscriberServices> SubscriberServices { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<TableEquipment> TableEquipment { get; set; }
     }
 }
