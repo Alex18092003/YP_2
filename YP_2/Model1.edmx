@@ -1,0 +1,1223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище CRM12Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AccessNetworks">
+          <Key>
+            <PropertyRef Name="kod_networks" />
+          </Key>
+          <Property Name="kod_networks" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="serial_number" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Applications">
+          <Key>
+            <PropertyRef Name="kod_applications" />
+          </Key>
+          <Property Name="kod_applications" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="number_applications" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="date_of_creation" Type="datetime" Nullable="false" />
+          <Property Name="kod_subscribers" Type="int" Nullable="false" />
+          <Property Name="kod_service" Type="int" Nullable="false" />
+          <Property Name="kod_service_view" Type="int" Nullable="false" />
+          <Property Name="kod_service_type" Type="int" Nullable="false" />
+          <Property Name="kod_statuse" Type="int" Nullable="false" />
+          <Property Name="type_equipment" Type="nvarchar" MaxLength="50" />
+          <Property Name="kod_description" Type="int" />
+          <Property Name="closing_date" Type="datetime" />
+          <Property Name="kod_problem_types" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BuildingType">
+          <Key>
+            <PropertyRef Name="kod_building" />
+          </Key>
+          <Property Name="kod_building" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ContractTypes">
+          <Key>
+            <PropertyRef Name="kod_contract_type" />
+          </Key>
+          <Property Name="kod_contract_type" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="contract_type" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DescriptionsProblems">
+          <Key>
+            <PropertyRef Name="kod_description" />
+          </Key>
+          <Property Name="kod_description" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Districts">
+          <Key>
+            <PropertyRef Name="kod_district" />
+          </Key>
+          <Property Name="kod_district" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="district" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="square" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="population" Type="int" />
+          <Property Name="number_metro_stations" Type="int" />
+          <Property Name="building_type" Type="int" />
+        </EntityType>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="kod_employee" />
+          </Key>
+          <Property Name="kod_employee" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="surname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="patrinymic" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="id_role" Type="int" Nullable="false" />
+          <Property Name="nomer" Type="int" />
+          <Property Name="password" Type="int" />
+          <Property Name="id_employees" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="photo" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Equipment">
+          <Key>
+            <PropertyRef Name="kod_equipment" />
+          </Key>
+          <Property Name="kod_equipment" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="seria_number" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Highways">
+          <Key>
+            <PropertyRef Name="kod_highway" />
+          </Key>
+          <Property Name="kod_highway" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="serial_number" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="InformationForEmployees">
+          <Key>
+            <PropertyRef Name="kod_information" />
+          </Key>
+          <Property Name="kod_information" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kod_employees" Type="int" Nullable="false" />
+          <Property Name="information" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pols">
+          <Key>
+            <PropertyRef Name="kod_pola" />
+          </Key>
+          <Property Name="kod_pola" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pol" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProblemTypes">
+          <Key>
+            <PropertyRef Name="kod_type" />
+          </Key>
+          <Property Name="kod_type" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="id_role" />
+          </Key>
+          <Property Name="id_role" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="role" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Services">
+          <Key>
+            <PropertyRef Name="kod_services" />
+          </Key>
+          <Property Name="kod_services" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ServicesTypes">
+          <Key>
+            <PropertyRef Name="kod_service_type" />
+          </Key>
+          <Property Name="kod_service_type" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ServicesView">
+          <Key>
+            <PropertyRef Name="kod_service_view" />
+          </Key>
+          <Property Name="kod_service_view" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Statuses">
+          <Key>
+            <PropertyRef Name="kod_status" />
+          </Key>
+          <Property Name="kod_status" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Subscribers">
+          <Key>
+            <PropertyRef Name="kod_subscribers" />
+          </Key>
+          <Property Name="kod_subscribers" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="subscriber_number" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="surname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="patronymic" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="kod_pola" Type="int" Nullable="false" />
+          <Property Name="date_of_birth" Type="datetime" Nullable="false" />
+          <Property Name="phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="place_of_residence" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="kod_district" Type="int" Nullable="false" />
+          <Property Name="addres_of_residence" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="series_passport_number" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="department_code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="issued_by" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="date_of_issue" Type="datetime" Nullable="false" />
+          <Property Name="contract_number" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="date_conclusion_contract" Type="datetime" Nullable="false" />
+          <Property Name="kod_contract_type" Type="int" Nullable="false" />
+          <Property Name="reason_for_termination" Type="nvarchar(max)" />
+          <Property Name="personal_account" Type="int" Nullable="false" />
+          <Property Name="termination_date" Type="datetime" />
+          <Property Name="rent" Type="nvarchar(max)" />
+          <Property Name="equipment_number" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SubscriberServices">
+          <Key>
+            <PropertyRef Name="kod" />
+          </Key>
+          <Property Name="kod" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kod_subscriber" Type="int" Nullable="false" />
+          <Property Name="kod_serveces" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_Applications_DescriptionsProblems">
+          <End Role="DescriptionsProblems" Type="Self.DescriptionsProblems" Multiplicity="0..1" />
+          <End Role="Applications" Type="Self.Applications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DescriptionsProblems">
+              <PropertyRef Name="kod_description" />
+            </Principal>
+            <Dependent Role="Applications">
+              <PropertyRef Name="kod_description" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Applications_ProblemTypes">
+          <End Role="ProblemTypes" Type="Self.ProblemTypes" Multiplicity="1" />
+          <End Role="Applications" Type="Self.Applications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProblemTypes">
+              <PropertyRef Name="kod_type" />
+            </Principal>
+            <Dependent Role="Applications">
+              <PropertyRef Name="kod_problem_types" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Applications_Services">
+          <End Role="Services" Type="Self.Services" Multiplicity="1" />
+          <End Role="Applications" Type="Self.Applications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Services">
+              <PropertyRef Name="kod_services" />
+            </Principal>
+            <Dependent Role="Applications">
+              <PropertyRef Name="kod_service" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Applications_ServicesTypes">
+          <End Role="ServicesTypes" Type="Self.ServicesTypes" Multiplicity="1" />
+          <End Role="Applications" Type="Self.Applications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServicesTypes">
+              <PropertyRef Name="kod_service_type" />
+            </Principal>
+            <Dependent Role="Applications">
+              <PropertyRef Name="kod_service_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Applications_ServicesView">
+          <End Role="ServicesView" Type="Self.ServicesView" Multiplicity="1" />
+          <End Role="Applications" Type="Self.Applications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServicesView">
+              <PropertyRef Name="kod_service_view" />
+            </Principal>
+            <Dependent Role="Applications">
+              <PropertyRef Name="kod_service_view" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Applications_Statuses">
+          <End Role="Statuses" Type="Self.Statuses" Multiplicity="1" />
+          <End Role="Applications" Type="Self.Applications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statuses">
+              <PropertyRef Name="kod_status" />
+            </Principal>
+            <Dependent Role="Applications">
+              <PropertyRef Name="kod_statuse" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Applications_subscribers">
+          <End Role="Subscribers" Type="Self.Subscribers" Multiplicity="1" />
+          <End Role="Applications" Type="Self.Applications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subscribers">
+              <PropertyRef Name="kod_subscribers" />
+            </Principal>
+            <Dependent Role="Applications">
+              <PropertyRef Name="kod_subscribers" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Districts_BuildingType">
+          <End Role="BuildingType" Type="Self.BuildingType" Multiplicity="0..1" />
+          <End Role="Districts" Type="Self.Districts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BuildingType">
+              <PropertyRef Name="kod_building" />
+            </Principal>
+            <Dependent Role="Districts">
+              <PropertyRef Name="building_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employees_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="id_role" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="id_role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InformationForEmployees_Employees">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+          <End Role="InformationForEmployees" Type="Self.InformationForEmployees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="kod_employee" />
+            </Principal>
+            <Dependent Role="InformationForEmployees">
+              <PropertyRef Name="kod_employees" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_subscribers_ContractTypes">
+          <End Role="ContractTypes" Type="Self.ContractTypes" Multiplicity="1" />
+          <End Role="Subscribers" Type="Self.Subscribers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContractTypes">
+              <PropertyRef Name="kod_contract_type" />
+            </Principal>
+            <Dependent Role="Subscribers">
+              <PropertyRef Name="kod_contract_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_subscribers_Districts">
+          <End Role="Districts" Type="Self.Districts" Multiplicity="1" />
+          <End Role="Subscribers" Type="Self.Subscribers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Districts">
+              <PropertyRef Name="kod_district" />
+            </Principal>
+            <Dependent Role="Subscribers">
+              <PropertyRef Name="kod_district" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_subscribers_Equipment">
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="1" />
+          <End Role="Subscribers" Type="Self.Subscribers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipment">
+              <PropertyRef Name="kod_equipment" />
+            </Principal>
+            <Dependent Role="Subscribers">
+              <PropertyRef Name="equipment_number" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_subscribers_Pols">
+          <End Role="Pols" Type="Self.Pols" Multiplicity="1" />
+          <End Role="Subscribers" Type="Self.Subscribers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pols">
+              <PropertyRef Name="kod_pola" />
+            </Principal>
+            <Dependent Role="Subscribers">
+              <PropertyRef Name="kod_pola" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubscriberServices_Services">
+          <End Role="Services" Type="Self.Services" Multiplicity="1" />
+          <End Role="SubscriberServices" Type="Self.SubscriberServices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Services">
+              <PropertyRef Name="kod_services" />
+            </Principal>
+            <Dependent Role="SubscriberServices">
+              <PropertyRef Name="kod_serveces" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubscriberServices_Subscribers">
+          <End Role="Subscribers" Type="Self.Subscribers" Multiplicity="1" />
+          <End Role="SubscriberServices" Type="Self.SubscriberServices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subscribers">
+              <PropertyRef Name="kod_subscribers" />
+            </Principal>
+            <Dependent Role="SubscriberServices">
+              <PropertyRef Name="kod_subscriber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище CRM12ModelContainer">
+          <EntitySet Name="AccessNetworks" EntityType="Self.AccessNetworks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Applications" EntityType="Self.Applications" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BuildingType" EntityType="Self.BuildingType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContractTypes" EntityType="Self.ContractTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DescriptionsProblems" EntityType="Self.DescriptionsProblems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Districts" EntityType="Self.Districts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Equipment" EntityType="Self.Equipment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Highways" EntityType="Self.Highways" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InformationForEmployees" EntityType="Self.InformationForEmployees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pols" EntityType="Self.Pols" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProblemTypes" EntityType="Self.ProblemTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Services" EntityType="Self.Services" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServicesTypes" EntityType="Self.ServicesTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServicesView" EntityType="Self.ServicesView" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Statuses" EntityType="Self.Statuses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subscribers" EntityType="Self.Subscribers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubscriberServices" EntityType="Self.SubscriberServices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Applications_DescriptionsProblems" Association="Self.FK_Applications_DescriptionsProblems">
+            <End Role="DescriptionsProblems" EntitySet="DescriptionsProblems" />
+            <End Role="Applications" EntitySet="Applications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Applications_ProblemTypes" Association="Self.FK_Applications_ProblemTypes">
+            <End Role="ProblemTypes" EntitySet="ProblemTypes" />
+            <End Role="Applications" EntitySet="Applications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Applications_Services" Association="Self.FK_Applications_Services">
+            <End Role="Services" EntitySet="Services" />
+            <End Role="Applications" EntitySet="Applications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Applications_ServicesTypes" Association="Self.FK_Applications_ServicesTypes">
+            <End Role="ServicesTypes" EntitySet="ServicesTypes" />
+            <End Role="Applications" EntitySet="Applications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Applications_ServicesView" Association="Self.FK_Applications_ServicesView">
+            <End Role="ServicesView" EntitySet="ServicesView" />
+            <End Role="Applications" EntitySet="Applications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Applications_Statuses" Association="Self.FK_Applications_Statuses">
+            <End Role="Statuses" EntitySet="Statuses" />
+            <End Role="Applications" EntitySet="Applications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Applications_subscribers" Association="Self.FK_Applications_subscribers">
+            <End Role="Subscribers" EntitySet="Subscribers" />
+            <End Role="Applications" EntitySet="Applications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Districts_BuildingType" Association="Self.FK_Districts_BuildingType">
+            <End Role="BuildingType" EntitySet="BuildingType" />
+            <End Role="Districts" EntitySet="Districts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employees_Roles" Association="Self.FK_Employees_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InformationForEmployees_Employees" Association="Self.FK_InformationForEmployees_Employees">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="InformationForEmployees" EntitySet="InformationForEmployees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_subscribers_ContractTypes" Association="Self.FK_subscribers_ContractTypes">
+            <End Role="ContractTypes" EntitySet="ContractTypes" />
+            <End Role="Subscribers" EntitySet="Subscribers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_subscribers_Districts" Association="Self.FK_subscribers_Districts">
+            <End Role="Districts" EntitySet="Districts" />
+            <End Role="Subscribers" EntitySet="Subscribers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_subscribers_Equipment" Association="Self.FK_subscribers_Equipment">
+            <End Role="Equipment" EntitySet="Equipment" />
+            <End Role="Subscribers" EntitySet="Subscribers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_subscribers_Pols" Association="Self.FK_subscribers_Pols">
+            <End Role="Pols" EntitySet="Pols" />
+            <End Role="Subscribers" EntitySet="Subscribers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubscriberServices_Services" Association="Self.FK_SubscriberServices_Services">
+            <End Role="Services" EntitySet="Services" />
+            <End Role="SubscriberServices" EntitySet="SubscriberServices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubscriberServices_Subscribers" Association="Self.FK_SubscriberServices_Subscribers">
+            <End Role="Subscribers" EntitySet="Subscribers" />
+            <End Role="SubscriberServices" EntitySet="SubscriberServices" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CRM12Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AccessNetworks">
+          <Key>
+            <PropertyRef Name="kod_networks" />
+          </Key>
+          <Property Name="kod_networks" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="serial_number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Applications">
+          <Key>
+            <PropertyRef Name="kod_applications" />
+          </Key>
+          <Property Name="kod_applications" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="number_applications" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="date_of_creation" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="kod_subscribers" Type="Int32" Nullable="false" />
+          <Property Name="kod_service" Type="Int32" Nullable="false" />
+          <Property Name="kod_service_view" Type="Int32" Nullable="false" />
+          <Property Name="kod_service_type" Type="Int32" Nullable="false" />
+          <Property Name="kod_statuse" Type="Int32" Nullable="false" />
+          <Property Name="type_equipment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="kod_description" Type="Int32" />
+          <Property Name="closing_date" Type="DateTime" Precision="3" />
+          <Property Name="kod_problem_types" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DescriptionsProblems" Relationship="Self.FK_Applications_DescriptionsProblems" FromRole="Applications" ToRole="DescriptionsProblems" />
+          <NavigationProperty Name="ProblemTypes" Relationship="Self.FK_Applications_ProblemTypes" FromRole="Applications" ToRole="ProblemTypes" />
+          <NavigationProperty Name="Services" Relationship="Self.FK_Applications_Services" FromRole="Applications" ToRole="Services" />
+          <NavigationProperty Name="ServicesTypes" Relationship="Self.FK_Applications_ServicesTypes" FromRole="Applications" ToRole="ServicesTypes" />
+          <NavigationProperty Name="ServicesView" Relationship="Self.FK_Applications_ServicesView" FromRole="Applications" ToRole="ServicesView" />
+          <NavigationProperty Name="Statuses" Relationship="Self.FK_Applications_Statuses" FromRole="Applications" ToRole="Statuses" />
+          <NavigationProperty Name="Subscribers" Relationship="Self.FK_Applications_subscribers" FromRole="Applications" ToRole="Subscribers" />
+        </EntityType>
+        <EntityType Name="BuildingType">
+          <Key>
+            <PropertyRef Name="kod_building" />
+          </Key>
+          <Property Name="kod_building" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Districts" Relationship="Self.FK_Districts_BuildingType" FromRole="BuildingType" ToRole="Districts" />
+        </EntityType>
+        <EntityType Name="ContractTypes">
+          <Key>
+            <PropertyRef Name="kod_contract_type" />
+          </Key>
+          <Property Name="kod_contract_type" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="contract_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Subscribers" Relationship="Self.FK_subscribers_ContractTypes" FromRole="ContractTypes" ToRole="Subscribers" />
+        </EntityType>
+        <EntityType Name="DescriptionsProblems">
+          <Key>
+            <PropertyRef Name="kod_description" />
+          </Key>
+          <Property Name="kod_description" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Applications" Relationship="Self.FK_Applications_DescriptionsProblems" FromRole="DescriptionsProblems" ToRole="Applications" />
+        </EntityType>
+        <EntityType Name="Districts">
+          <Key>
+            <PropertyRef Name="kod_district" />
+          </Key>
+          <Property Name="kod_district" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="district" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="square" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="population" Type="Int32" />
+          <Property Name="number_metro_stations" Type="Int32" />
+          <Property Name="building_type" Type="Int32" />
+          <NavigationProperty Name="BuildingType" Relationship="Self.FK_Districts_BuildingType" FromRole="Districts" ToRole="BuildingType" />
+          <NavigationProperty Name="Subscribers" Relationship="Self.FK_subscribers_Districts" FromRole="Districts" ToRole="Subscribers" />
+        </EntityType>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="kod_employee" />
+          </Key>
+          <Property Name="kod_employee" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="patrinymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_role" Type="Int32" Nullable="false" />
+          <Property Name="nomer" Type="Int32" />
+          <Property Name="password" Type="Int32" />
+          <Property Name="id_employees" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="photo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Roles" Relationship="Self.FK_Employees_Roles" FromRole="Employees" ToRole="Roles" />
+          <NavigationProperty Name="InformationForEmployees" Relationship="Self.FK_InformationForEmployees_Employees" FromRole="Employees" ToRole="InformationForEmployees" />
+        </EntityType>
+        <EntityType Name="Equipment">
+          <Key>
+            <PropertyRef Name="kod_equipment" />
+          </Key>
+          <Property Name="kod_equipment" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="seria_number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Subscribers" Relationship="Self.FK_subscribers_Equipment" FromRole="Equipment" ToRole="Subscribers" />
+        </EntityType>
+        <EntityType Name="Highways">
+          <Key>
+            <PropertyRef Name="kod_highway" />
+          </Key>
+          <Property Name="kod_highway" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="serial_number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="InformationForEmployees">
+          <Key>
+            <PropertyRef Name="kod_information" />
+          </Key>
+          <Property Name="kod_information" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kod_employees" Type="Int32" Nullable="false" />
+          <Property Name="information" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_InformationForEmployees_Employees" FromRole="InformationForEmployees" ToRole="Employees" />
+        </EntityType>
+        <EntityType Name="Pols">
+          <Key>
+            <PropertyRef Name="kod_pola" />
+          </Key>
+          <Property Name="kod_pola" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pol" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Subscribers" Relationship="Self.FK_subscribers_Pols" FromRole="Pols" ToRole="Subscribers" />
+        </EntityType>
+        <EntityType Name="ProblemTypes">
+          <Key>
+            <PropertyRef Name="kod_type" />
+          </Key>
+          <Property Name="kod_type" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Applications" Relationship="Self.FK_Applications_ProblemTypes" FromRole="ProblemTypes" ToRole="Applications" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="id_role" />
+          </Key>
+          <Property Name="id_role" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_Employees_Roles" FromRole="Roles" ToRole="Employees" />
+        </EntityType>
+        <EntityType Name="Services">
+          <Key>
+            <PropertyRef Name="kod_services" />
+          </Key>
+          <Property Name="kod_services" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Applications" Relationship="Self.FK_Applications_Services" FromRole="Services" ToRole="Applications" />
+          <NavigationProperty Name="SubscriberServices" Relationship="Self.FK_SubscriberServices_Services" FromRole="Services" ToRole="SubscriberServices" />
+        </EntityType>
+        <EntityType Name="ServicesTypes">
+          <Key>
+            <PropertyRef Name="kod_service_type" />
+          </Key>
+          <Property Name="kod_service_type" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Applications" Relationship="Self.FK_Applications_ServicesTypes" FromRole="ServicesTypes" ToRole="Applications" />
+        </EntityType>
+        <EntityType Name="ServicesView">
+          <Key>
+            <PropertyRef Name="kod_service_view" />
+          </Key>
+          <Property Name="kod_service_view" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Applications" Relationship="Self.FK_Applications_ServicesView" FromRole="ServicesView" ToRole="Applications" />
+        </EntityType>
+        <EntityType Name="Statuses">
+          <Key>
+            <PropertyRef Name="kod_status" />
+          </Key>
+          <Property Name="kod_status" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Applications" Relationship="Self.FK_Applications_Statuses" FromRole="Statuses" ToRole="Applications" />
+        </EntityType>
+        <EntityType Name="Subscribers">
+          <Key>
+            <PropertyRef Name="kod_subscribers" />
+          </Key>
+          <Property Name="kod_subscribers" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="subscriber_number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="kod_pola" Type="Int32" Nullable="false" />
+          <Property Name="date_of_birth" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="place_of_residence" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="kod_district" Type="Int32" Nullable="false" />
+          <Property Name="addres_of_residence" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="series_passport_number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="department_code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="issued_by" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="date_of_issue" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="contract_number" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="date_conclusion_contract" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="kod_contract_type" Type="Int32" Nullable="false" />
+          <Property Name="reason_for_termination" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="personal_account" Type="Int32" Nullable="false" />
+          <Property Name="termination_date" Type="DateTime" Precision="3" />
+          <Property Name="rent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="equipment_number" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Applications" Relationship="Self.FK_Applications_subscribers" FromRole="Subscribers" ToRole="Applications" />
+          <NavigationProperty Name="ContractTypes" Relationship="Self.FK_subscribers_ContractTypes" FromRole="Subscribers" ToRole="ContractTypes" />
+          <NavigationProperty Name="Districts" Relationship="Self.FK_subscribers_Districts" FromRole="Subscribers" ToRole="Districts" />
+          <NavigationProperty Name="Equipment" Relationship="Self.FK_subscribers_Equipment" FromRole="Subscribers" ToRole="Equipment" />
+          <NavigationProperty Name="Pols" Relationship="Self.FK_subscribers_Pols" FromRole="Subscribers" ToRole="Pols" />
+          <NavigationProperty Name="SubscriberServices" Relationship="Self.FK_SubscriberServices_Subscribers" FromRole="Subscribers" ToRole="SubscriberServices" />
+        </EntityType>
+        <EntityType Name="SubscriberServices">
+          <Key>
+            <PropertyRef Name="kod" />
+          </Key>
+          <Property Name="kod" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kod_subscriber" Type="Int32" Nullable="false" />
+          <Property Name="kod_serveces" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Services" Relationship="Self.FK_SubscriberServices_Services" FromRole="SubscriberServices" ToRole="Services" />
+          <NavigationProperty Name="Subscribers" Relationship="Self.FK_SubscriberServices_Subscribers" FromRole="SubscriberServices" ToRole="Subscribers" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_Applications_DescriptionsProblems">
+          <End Role="DescriptionsProblems" Type="Self.DescriptionsProblems" Multiplicity="0..1" />
+          <End Role="Applications" Type="Self.Applications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DescriptionsProblems">
+              <PropertyRef Name="kod_description" />
+            </Principal>
+            <Dependent Role="Applications">
+              <PropertyRef Name="kod_description" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Applications_ProblemTypes">
+          <End Role="ProblemTypes" Type="Self.ProblemTypes" Multiplicity="1" />
+          <End Role="Applications" Type="Self.Applications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProblemTypes">
+              <PropertyRef Name="kod_type" />
+            </Principal>
+            <Dependent Role="Applications">
+              <PropertyRef Name="kod_problem_types" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Applications_Services">
+          <End Role="Services" Type="Self.Services" Multiplicity="1" />
+          <End Role="Applications" Type="Self.Applications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Services">
+              <PropertyRef Name="kod_services" />
+            </Principal>
+            <Dependent Role="Applications">
+              <PropertyRef Name="kod_service" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Applications_ServicesTypes">
+          <End Role="ServicesTypes" Type="Self.ServicesTypes" Multiplicity="1" />
+          <End Role="Applications" Type="Self.Applications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServicesTypes">
+              <PropertyRef Name="kod_service_type" />
+            </Principal>
+            <Dependent Role="Applications">
+              <PropertyRef Name="kod_service_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Applications_ServicesView">
+          <End Role="ServicesView" Type="Self.ServicesView" Multiplicity="1" />
+          <End Role="Applications" Type="Self.Applications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServicesView">
+              <PropertyRef Name="kod_service_view" />
+            </Principal>
+            <Dependent Role="Applications">
+              <PropertyRef Name="kod_service_view" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Applications_Statuses">
+          <End Role="Statuses" Type="Self.Statuses" Multiplicity="1" />
+          <End Role="Applications" Type="Self.Applications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statuses">
+              <PropertyRef Name="kod_status" />
+            </Principal>
+            <Dependent Role="Applications">
+              <PropertyRef Name="kod_statuse" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Applications_subscribers">
+          <End Role="Subscribers" Type="Self.Subscribers" Multiplicity="1" />
+          <End Role="Applications" Type="Self.Applications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subscribers">
+              <PropertyRef Name="kod_subscribers" />
+            </Principal>
+            <Dependent Role="Applications">
+              <PropertyRef Name="kod_subscribers" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Districts_BuildingType">
+          <End Role="BuildingType" Type="Self.BuildingType" Multiplicity="0..1" />
+          <End Role="Districts" Type="Self.Districts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BuildingType">
+              <PropertyRef Name="kod_building" />
+            </Principal>
+            <Dependent Role="Districts">
+              <PropertyRef Name="building_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_subscribers_ContractTypes">
+          <End Role="ContractTypes" Type="Self.ContractTypes" Multiplicity="1" />
+          <End Role="Subscribers" Type="Self.Subscribers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContractTypes">
+              <PropertyRef Name="kod_contract_type" />
+            </Principal>
+            <Dependent Role="Subscribers">
+              <PropertyRef Name="kod_contract_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_subscribers_Districts">
+          <End Role="Districts" Type="Self.Districts" Multiplicity="1" />
+          <End Role="Subscribers" Type="Self.Subscribers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Districts">
+              <PropertyRef Name="kod_district" />
+            </Principal>
+            <Dependent Role="Subscribers">
+              <PropertyRef Name="kod_district" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employees_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="id_role" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="id_role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InformationForEmployees_Employees">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+          <End Role="InformationForEmployees" Type="Self.InformationForEmployees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="kod_employee" />
+            </Principal>
+            <Dependent Role="InformationForEmployees">
+              <PropertyRef Name="kod_employees" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_subscribers_Equipment">
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="1" />
+          <End Role="Subscribers" Type="Self.Subscribers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipment">
+              <PropertyRef Name="kod_equipment" />
+            </Principal>
+            <Dependent Role="Subscribers">
+              <PropertyRef Name="equipment_number" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_subscribers_Pols">
+          <End Role="Pols" Type="Self.Pols" Multiplicity="1" />
+          <End Role="Subscribers" Type="Self.Subscribers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pols">
+              <PropertyRef Name="kod_pola" />
+            </Principal>
+            <Dependent Role="Subscribers">
+              <PropertyRef Name="kod_pola" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubscriberServices_Services">
+          <End Role="Services" Type="Self.Services" Multiplicity="1" />
+          <End Role="SubscriberServices" Type="Self.SubscriberServices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Services">
+              <PropertyRef Name="kod_services" />
+            </Principal>
+            <Dependent Role="SubscriberServices">
+              <PropertyRef Name="kod_serveces" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubscriberServices_Subscribers">
+          <End Role="Subscribers" Type="Self.Subscribers" Multiplicity="1" />
+          <End Role="SubscriberServices" Type="Self.SubscriberServices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subscribers">
+              <PropertyRef Name="kod_subscribers" />
+            </Principal>
+            <Dependent Role="SubscriberServices">
+              <PropertyRef Name="kod_subscriber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AccessNetworks" EntityType="Self.AccessNetworks" />
+          <EntitySet Name="Applications" EntityType="Self.Applications" />
+          <EntitySet Name="BuildingType" EntityType="Self.BuildingType" />
+          <EntitySet Name="ContractTypes" EntityType="Self.ContractTypes" />
+          <EntitySet Name="DescriptionsProblems" EntityType="Self.DescriptionsProblems" />
+          <EntitySet Name="Districts" EntityType="Self.Districts" />
+          <EntitySet Name="Employees" EntityType="Self.Employees" />
+          <EntitySet Name="Equipment" EntityType="Self.Equipment" />
+          <EntitySet Name="Highways" EntityType="Self.Highways" />
+          <EntitySet Name="InformationForEmployees" EntityType="Self.InformationForEmployees" />
+          <EntitySet Name="Pols" EntityType="Self.Pols" />
+          <EntitySet Name="ProblemTypes" EntityType="Self.ProblemTypes" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" />
+          <EntitySet Name="Services" EntityType="Self.Services" />
+          <EntitySet Name="ServicesTypes" EntityType="Self.ServicesTypes" />
+          <EntitySet Name="ServicesView" EntityType="Self.ServicesView" />
+          <EntitySet Name="Statuses" EntityType="Self.Statuses" />
+          <EntitySet Name="Subscribers" EntityType="Self.Subscribers" />
+          <EntitySet Name="SubscriberServices" EntityType="Self.SubscriberServices" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <AssociationSet Name="FK_Applications_DescriptionsProblems" Association="Self.FK_Applications_DescriptionsProblems">
+            <End Role="DescriptionsProblems" EntitySet="DescriptionsProblems" />
+            <End Role="Applications" EntitySet="Applications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Applications_ProblemTypes" Association="Self.FK_Applications_ProblemTypes">
+            <End Role="ProblemTypes" EntitySet="ProblemTypes" />
+            <End Role="Applications" EntitySet="Applications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Applications_Services" Association="Self.FK_Applications_Services">
+            <End Role="Services" EntitySet="Services" />
+            <End Role="Applications" EntitySet="Applications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Applications_ServicesTypes" Association="Self.FK_Applications_ServicesTypes">
+            <End Role="ServicesTypes" EntitySet="ServicesTypes" />
+            <End Role="Applications" EntitySet="Applications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Applications_ServicesView" Association="Self.FK_Applications_ServicesView">
+            <End Role="ServicesView" EntitySet="ServicesView" />
+            <End Role="Applications" EntitySet="Applications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Applications_Statuses" Association="Self.FK_Applications_Statuses">
+            <End Role="Statuses" EntitySet="Statuses" />
+            <End Role="Applications" EntitySet="Applications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Applications_subscribers" Association="Self.FK_Applications_subscribers">
+            <End Role="Subscribers" EntitySet="Subscribers" />
+            <End Role="Applications" EntitySet="Applications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Districts_BuildingType" Association="Self.FK_Districts_BuildingType">
+            <End Role="BuildingType" EntitySet="BuildingType" />
+            <End Role="Districts" EntitySet="Districts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_subscribers_ContractTypes" Association="Self.FK_subscribers_ContractTypes">
+            <End Role="ContractTypes" EntitySet="ContractTypes" />
+            <End Role="Subscribers" EntitySet="Subscribers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_subscribers_Districts" Association="Self.FK_subscribers_Districts">
+            <End Role="Districts" EntitySet="Districts" />
+            <End Role="Subscribers" EntitySet="Subscribers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employees_Roles" Association="Self.FK_Employees_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InformationForEmployees_Employees" Association="Self.FK_InformationForEmployees_Employees">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="InformationForEmployees" EntitySet="InformationForEmployees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_subscribers_Equipment" Association="Self.FK_subscribers_Equipment">
+            <End Role="Equipment" EntitySet="Equipment" />
+            <End Role="Subscribers" EntitySet="Subscribers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_subscribers_Pols" Association="Self.FK_subscribers_Pols">
+            <End Role="Pols" EntitySet="Pols" />
+            <End Role="Subscribers" EntitySet="Subscribers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubscriberServices_Services" Association="Self.FK_SubscriberServices_Services">
+            <End Role="Services" EntitySet="Services" />
+            <End Role="SubscriberServices" EntitySet="SubscriberServices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubscriberServices_Subscribers" Association="Self.FK_SubscriberServices_Subscribers">
+            <End Role="Subscribers" EntitySet="Subscribers" />
+            <End Role="SubscriberServices" EntitySet="SubscriberServices" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище CRM12ModelContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="AccessNetworks">
+            <EntityTypeMapping TypeName="CRM12Model.AccessNetworks">
+              <MappingFragment StoreEntitySet="AccessNetworks">
+                <ScalarProperty Name="kod_networks" ColumnName="kod_networks" />
+                <ScalarProperty Name="serial_number" ColumnName="serial_number" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Applications">
+            <EntityTypeMapping TypeName="CRM12Model.Applications">
+              <MappingFragment StoreEntitySet="Applications">
+                <ScalarProperty Name="kod_applications" ColumnName="kod_applications" />
+                <ScalarProperty Name="number_applications" ColumnName="number_applications" />
+                <ScalarProperty Name="date_of_creation" ColumnName="date_of_creation" />
+                <ScalarProperty Name="kod_subscribers" ColumnName="kod_subscribers" />
+                <ScalarProperty Name="kod_service" ColumnName="kod_service" />
+                <ScalarProperty Name="kod_service_view" ColumnName="kod_service_view" />
+                <ScalarProperty Name="kod_service_type" ColumnName="kod_service_type" />
+                <ScalarProperty Name="kod_statuse" ColumnName="kod_statuse" />
+                <ScalarProperty Name="type_equipment" ColumnName="type_equipment" />
+                <ScalarProperty Name="kod_description" ColumnName="kod_description" />
+                <ScalarProperty Name="closing_date" ColumnName="closing_date" />
+                <ScalarProperty Name="kod_problem_types" ColumnName="kod_problem_types" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BuildingType">
+            <EntityTypeMapping TypeName="CRM12Model.BuildingType">
+              <MappingFragment StoreEntitySet="BuildingType">
+                <ScalarProperty Name="kod_building" ColumnName="kod_building" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContractTypes">
+            <EntityTypeMapping TypeName="CRM12Model.ContractTypes">
+              <MappingFragment StoreEntitySet="ContractTypes">
+                <ScalarProperty Name="kod_contract_type" ColumnName="kod_contract_type" />
+                <ScalarProperty Name="contract_type" ColumnName="contract_type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DescriptionsProblems">
+            <EntityTypeMapping TypeName="CRM12Model.DescriptionsProblems">
+              <MappingFragment StoreEntitySet="DescriptionsProblems">
+                <ScalarProperty Name="kod_description" ColumnName="kod_description" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Districts">
+            <EntityTypeMapping TypeName="CRM12Model.Districts">
+              <MappingFragment StoreEntitySet="Districts">
+                <ScalarProperty Name="kod_district" ColumnName="kod_district" />
+                <ScalarProperty Name="district" ColumnName="district" />
+                <ScalarProperty Name="square" ColumnName="square" />
+                <ScalarProperty Name="population" ColumnName="population" />
+                <ScalarProperty Name="number_metro_stations" ColumnName="number_metro_stations" />
+                <ScalarProperty Name="building_type" ColumnName="building_type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="CRM12Model.Employees">
+              <MappingFragment StoreEntitySet="Employees">
+                <ScalarProperty Name="kod_employee" ColumnName="kod_employee" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="patrinymic" ColumnName="patrinymic" />
+                <ScalarProperty Name="id_role" ColumnName="id_role" />
+                <ScalarProperty Name="nomer" ColumnName="nomer" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="id_employees" ColumnName="id_employees" />
+                <ScalarProperty Name="photo" ColumnName="photo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Equipment">
+            <EntityTypeMapping TypeName="CRM12Model.Equipment">
+              <MappingFragment StoreEntitySet="Equipment">
+                <ScalarProperty Name="kod_equipment" ColumnName="kod_equipment" />
+                <ScalarProperty Name="seria_number" ColumnName="seria_number" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Highways">
+            <EntityTypeMapping TypeName="CRM12Model.Highways">
+              <MappingFragment StoreEntitySet="Highways">
+                <ScalarProperty Name="kod_highway" ColumnName="kod_highway" />
+                <ScalarProperty Name="serial_number" ColumnName="serial_number" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InformationForEmployees">
+            <EntityTypeMapping TypeName="CRM12Model.InformationForEmployees">
+              <MappingFragment StoreEntitySet="InformationForEmployees">
+                <ScalarProperty Name="kod_information" ColumnName="kod_information" />
+                <ScalarProperty Name="kod_employees" ColumnName="kod_employees" />
+                <ScalarProperty Name="information" ColumnName="information" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pols">
+            <EntityTypeMapping TypeName="CRM12Model.Pols">
+              <MappingFragment StoreEntitySet="Pols">
+                <ScalarProperty Name="kod_pola" ColumnName="kod_pola" />
+                <ScalarProperty Name="pol" ColumnName="pol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProblemTypes">
+            <EntityTypeMapping TypeName="CRM12Model.ProblemTypes">
+              <MappingFragment StoreEntitySet="ProblemTypes">
+                <ScalarProperty Name="kod_type" ColumnName="kod_type" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="CRM12Model.Roles">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="id_role" ColumnName="id_role" />
+                <ScalarProperty Name="role" ColumnName="role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Services">
+            <EntityTypeMapping TypeName="CRM12Model.Services">
+              <MappingFragment StoreEntitySet="Services">
+                <ScalarProperty Name="kod_services" ColumnName="kod_services" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServicesTypes">
+            <EntityTypeMapping TypeName="CRM12Model.ServicesTypes">
+              <MappingFragment StoreEntitySet="ServicesTypes">
+                <ScalarProperty Name="kod_service_type" ColumnName="kod_service_type" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServicesView">
+            <EntityTypeMapping TypeName="CRM12Model.ServicesView">
+              <MappingFragment StoreEntitySet="ServicesView">
+                <ScalarProperty Name="kod_service_view" ColumnName="kod_service_view" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Statuses">
+            <EntityTypeMapping TypeName="CRM12Model.Statuses">
+              <MappingFragment StoreEntitySet="Statuses">
+                <ScalarProperty Name="kod_status" ColumnName="kod_status" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subscribers">
+            <EntityTypeMapping TypeName="CRM12Model.Subscribers">
+              <MappingFragment StoreEntitySet="Subscribers">
+                <ScalarProperty Name="kod_subscribers" ColumnName="kod_subscribers" />
+                <ScalarProperty Name="subscriber_number" ColumnName="subscriber_number" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="patronymic" ColumnName="patronymic" />
+                <ScalarProperty Name="kod_pola" ColumnName="kod_pola" />
+                <ScalarProperty Name="date_of_birth" ColumnName="date_of_birth" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="place_of_residence" ColumnName="place_of_residence" />
+                <ScalarProperty Name="kod_district" ColumnName="kod_district" />
+                <ScalarProperty Name="addres_of_residence" ColumnName="addres_of_residence" />
+                <ScalarProperty Name="series_passport_number" ColumnName="series_passport_number" />
+                <ScalarProperty Name="department_code" ColumnName="department_code" />
+                <ScalarProperty Name="issued_by" ColumnName="issued_by" />
+                <ScalarProperty Name="date_of_issue" ColumnName="date_of_issue" />
+                <ScalarProperty Name="contract_number" ColumnName="contract_number" />
+                <ScalarProperty Name="date_conclusion_contract" ColumnName="date_conclusion_contract" />
+                <ScalarProperty Name="kod_contract_type" ColumnName="kod_contract_type" />
+                <ScalarProperty Name="reason_for_termination" ColumnName="reason_for_termination" />
+                <ScalarProperty Name="personal_account" ColumnName="personal_account" />
+                <ScalarProperty Name="termination_date" ColumnName="termination_date" />
+                <ScalarProperty Name="rent" ColumnName="rent" />
+                <ScalarProperty Name="equipment_number" ColumnName="equipment_number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubscriberServices">
+            <EntityTypeMapping TypeName="CRM12Model.SubscriberServices">
+              <MappingFragment StoreEntitySet="SubscriberServices">
+                <ScalarProperty Name="kod" ColumnName="kod" />
+                <ScalarProperty Name="kod_subscriber" ColumnName="kod_subscriber" />
+                <ScalarProperty Name="kod_serveces" ColumnName="kod_serveces" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="CRM12Model.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

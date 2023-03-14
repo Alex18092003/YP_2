@@ -16,16 +16,13 @@ using System.Windows.Shapes;
 namespace YP_2
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для PageMainMenu.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class PageMainMenu : Page
     {
-        public MainWindow()
+        public PageMainMenu()
         {
             InitializeComponent();
-            ClassBase.entities = new Entities();
-            ClassFrame.frame = frame;
-            ClassFrame.frame.Navigate(new PageMainMenu());
         }
     }
 }
