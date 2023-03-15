@@ -18,7 +18,14 @@
             <TextBlock Name="TextContractNumber"></TextBlock>
             <TextBlock Name="TextDateConclusion"></TextBlock>
             <TextBlock Name="TextContractType"></TextBlock>
-         
+            <TextBlock Name="TextTerminationDate"></TextBlock>
+            <TextBlock Name="TextReason"></TextBlock>
+            <TextBlock Name="TextPersonalAccount"></TextBlock>
+            <TextBlock></TextBlock>
+            <TextBlock Name="TextServices"></TextBlock>
+            <TextBlock Name="TextServicesConnectionData"></TextBlock>
+            <TextBlock Name="TextEquipment"></TextBlock>
+            <TextBlock></TextBlock>
         </StackPanel>
         
     </Grid>
