@@ -10,6 +10,7 @@
 
     <Grid>
         <StackPanel>
+            <Button Name="ButtonBack" Click="ButtonBack_Click">Назад</Button>
             <TextBlock Name="TextNomer"></TextBlock>
             <TextBlock Name="FIO"></TextBlock>
             <TextBlock Name="TextSeriesNomer"></TextBlock>
