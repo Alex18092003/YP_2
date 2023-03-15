@@ -1,0 +1,25 @@
+﻿<Page x:Class="YP_2.PageSubscribers"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:YP_2"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="1000"
+      Title="Информация об абоненте">
+
+    <Grid>
+        <StackPanel>
+            <TextBlock Name="TextNomer"></TextBlock>
+            <TextBlock Name="FIO"></TextBlock>
+            <TextBlock Name="TextSeriesNomer"></TextBlock>
+            <TextBlock Name="TextDateOfIssue"></TextBlock>
+            <TextBlock Name="TextIssuesBy"></TextBlock>
+            <TextBlock Name="TextContractNumber"></TextBlock>
+            <TextBlock Name="TextDateConclusion"></TextBlock>
+            <TextBlock Name="TextContractType"></TextBlock>
+         
+        </StackPanel>
+        
+    </Grid>
+</Page>

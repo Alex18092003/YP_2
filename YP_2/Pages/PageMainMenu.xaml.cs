@@ -121,7 +121,7 @@ namespace YP_2
             //поиск
             if (!string.IsNullOrWhiteSpace(TextBoxSurname.Text))
             {
-                subscribers = subscribers.Where(x=> x.surname == TextBoxSurname.Text).ToList();
+                subscribers = subscribers.Where(x => x.surname.ToLower().Contains(TextBoxSurname.Text.ToLower())).ToList();
             }
 
             if(ComboBoxRaion.SelectedIndex >0)
@@ -132,7 +132,9 @@ namespace YP_2
 
             if(!string.IsNullOrWhiteSpace(TextBoxLichSchet.Text))
             {
-                subscribers = subscribers.Where(x=> x.personal_account == Convert.ToInt32(TextBoxLichSchet.Text)).ToList();
+                subscribers = subscribers.Where(x => Convert.ToString(x.personal_account).ToLower().Contains(TextBoxLichSchet.Text.ToLower())).ToList();
+                //subscribers = subscribers.Where(x=> x.personal_account == Convert.ToInt32(TextBoxLichSchet.Text)).ToList();
+                //subscribers = subscribers.Where(x => x.personal_account.ToLower().Contains(TextBoxLichSchet.Text.ToLower())).ToList();
             }
 
             GridSubscription.ItemsSource = subscribers;
@@ -145,7 +147,7 @@ namespace YP_2
 
         private void TextBoxSurname_TextChanged(object sender, TextChangedEventArgs e)
         {
-            //Filter();
+            Filter();
         }
 
         private void ComboBoxRaion_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -156,6 +158,24 @@ namespace YP_2
         private void TextBoxLichSchet_SelectionChanged(object sender, RoutedEventArgs e)
         {
             Filter();
+        }
+
+        private void GridSubscription_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Subscribers subscribers = new Subscribers();
+            foreach(Subscribers subscribers1 in GridSubscription.SelectedItems)
+            {
+                subscribers = subscribers1;
+            }
+
+            if(subscribers != null)
+            {
+                ClassFrame.frame.Navigate(new PageSubscribers(subscribers));
+            }
+            else
+            {
+                return;
+            }
         }
     }
 }

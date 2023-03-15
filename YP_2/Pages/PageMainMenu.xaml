@@ -116,7 +116,7 @@
                 </StackPanel>
             </StackPanel>
             <StackPanel>
-                <DataGrid Height="350" Name="GridSubscription" AutoGenerateColumns="False" CanUserAddRows="False" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                <DataGrid MouseDown="GridSubscription_MouseDown" IsReadOnly="True"  Height="350" Name="GridSubscription" AutoGenerateColumns="False" CanUserAddRows="False" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Номер" Binding="{Binding subscriber_number}" Width="1*"></DataGridTextColumn>
                         <DataGridTextColumn Header="ФИО" Binding="{Binding FIO}" Width="3*"></DataGridTextColumn>
