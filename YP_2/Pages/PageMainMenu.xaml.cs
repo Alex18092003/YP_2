@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,8 @@ namespace YP_2
     /// </summary>
     public partial class PageMainMenu : Page
     {
+        List<Subscribers> subscribers = new List<Subscribers>();
+
         public PageMainMenu()
         {
             InitializeComponent();
@@ -31,13 +34,19 @@ namespace YP_2
 
             GridSubscription.ItemsSource = ClassBase.entities.Subscribers.ToList();
             CheckBoxActiv.IsChecked = true;
-            List
+           List<Districts> districts = ClassBase.entities.Districts.ToList();
+            ComboBoxRaion.Items.Add("Все районы");
+            foreach (Districts district in districts)
+            {
+                ComboBoxRaion.Items.Add(district.district);
+            }
+            ComboBoxRaion.SelectedIndex = 0;
         }
 
         private void ComboEmployes_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Employees employees = ClassBase.entities.Employees.FirstOrDefault(x => x.kod_employee == ComboEmployes.SelectedIndex + 1);
-            //ImageEmployee.ImageSource = new BitmapImage(new Uri( employees.photo, UriKind.Relative));
+            //ImageEmployee.ImageSource = new BitmapImage(new Uri(employees.photo, UriKind.Relative));
             if (employees != null)
             {
                 
@@ -97,6 +106,56 @@ namespace YP_2
         private void ButtonForward_MouseDown(object sender, MouseButtonEventArgs e)
         {
 
+        }
+
+        public void Filter()
+        {
+            List<Subscribers> subscribers = new List<Subscribers>();
+            //ListFilter = new List<Subscribers>();
+            subscribers = ClassBase.entities.Subscribers.ToList();
+
+            if ((bool)CheckBoxActiv.IsChecked && (bool)CheckBoxNoActiv.IsChecked)
+            {
+                subscribers = ClassBase.entities.Subscribers.ToList();
+            }
+            //поиск
+            if (!string.IsNullOrWhiteSpace(TextBoxSurname.Text))
+            {
+                subscribers = subscribers.Where(x=> x.surname == TextBoxSurname.Text).ToList();
+            }
+
+            if(ComboBoxRaion.SelectedIndex >0)
+            {
+                Districts districts = ClassBase.entities.Districts.FirstOrDefault(x => x.district == ComboBoxRaion.SelectedValue);
+                subscribers = subscribers.Where(x => x.kod_district == districts.kod_district).ToList();
+            }
+
+            if(!string.IsNullOrWhiteSpace(TextBoxLichSchet.Text))
+            {
+                subscribers = subscribers.Where(x=> x.personal_account == Convert.ToInt32(TextBoxLichSchet.Text)).ToList();
+            }
+
+            GridSubscription.ItemsSource = subscribers;
+            if(subscribers.Count == 0)
+            {
+                MessageBox.Show("Данные отсутсвуют", "Сообщение");
+            }
+        }
+
+
+        private void TextBoxSurname_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            //Filter();
+        }
+
+        private void ComboBoxRaion_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Filter();
+        }
+
+        private void TextBoxLichSchet_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+            Filter();
         }
     }
 }

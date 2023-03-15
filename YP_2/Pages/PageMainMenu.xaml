@@ -5,13 +5,17 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:YP_2"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="600" d:DesignWidth="1000"
       Title="Абоненты">
+
+    <Page.Resources>
+        <BitmapImage x:Key="DefultImage" UriSource="../resources/Фото для заглушки при отсутствии фото сотрудника.jpg"></BitmapImage>
+    </Page.Resources>
 
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"></ColumnDefinition>
-            <ColumnDefinition Width="5*"></ColumnDefinition>
+            <ColumnDefinition Width="6*"></ColumnDefinition>
             <ColumnDefinition Width="2*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -50,12 +54,12 @@
 
         <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2">
             <TextBlock FontSize="30" VerticalAlignment="Center" Margin="10,0,0,0" Name="TextName">Абоненты ТНС</TextBlock>
-            <ComboBox Margin="20,0,0,0" SelectionChanged="ComboEmployes_SelectionChanged" Height="20" Width="200" Name="ComboEmployes"></ComboBox>
+            <ComboBox FontSize="14" Margin="20,0,0,0" SelectionChanged="ComboEmployes_SelectionChanged" Height="28" Width="250" Name="ComboEmployes"></ComboBox>
             <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
                 
                     <Ellipse Width="50" Height="50"  >
                         <Ellipse.Fill>
-                            <ImageBrush x:Name="ImageEmployee"  Stretch="UniformToFill"/>
+                        <ImageBrush x:Name="ImageEmployee" ImageSource="{Binding photo, TargetNullValue= {StaticResource DefultImage}}"  Stretch="UniformToFill"/>
                         </Ellipse.Fill>
                     </Ellipse>
 
@@ -73,11 +77,11 @@
                 <Polyline Stroke="Black" Points="0, 15, 15, 5, 30, 15" HorizontalAlignment="Center"/>
             </StackPanel>
             
-            <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" Name="ListEvents">
+            <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" Height="370" Name="ListEvents">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <Grid Background="Gray" Width="200" HorizontalAlignment="Center" >
-                            <TextBlock Text="{Binding information}" HorizontalAlignment="Center"  ></TextBlock>
+                        <Grid Background="Gray" Height="70"  Width="200" HorizontalAlignment="Center" >
+                            <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" FontSize="20" Text="{Binding information}" HorizontalAlignment="Center"  ></TextBlock>
                         </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>
@@ -92,11 +96,11 @@
             <StackPanel Orientation="Horizontal">
                 <StackPanel>
                     <TextBlock>Фамилия</TextBlock>
-                    <TextBox Name="TextBoxSurname"></TextBox>
+                    <TextBox TextChanged="TextBoxSurname_TextChanged" Name="TextBoxSurname"></TextBox>
                 </StackPanel>
                 <StackPanel Margin="10,0,0,0">
                     <TextBlock>Район</TextBlock>
-                    <ComboBox Name="ComboBoxRaion"></ComboBox>
+                    <ComboBox SelectionChanged="ComboBoxRaion_SelectionChanged" Name="ComboBoxRaion"></ComboBox>
                 </StackPanel>
                 <StackPanel Margin="10,0,0,0">
                     <TextBlock>Улица</TextBlock>
@@ -108,17 +112,17 @@
                 </StackPanel>
                 <StackPanel Margin="10,0,0,0">
                     <TextBlock>ЛС</TextBlock>
-                    <TextBox Name="TextBoxLichSchet"></TextBox>
+                    <TextBox SelectionChanged="TextBoxLichSchet_SelectionChanged" Name="TextBoxLichSchet"></TextBox>
                 </StackPanel>
             </StackPanel>
             <StackPanel>
-                <DataGrid Name="GridSubscription">
+                <DataGrid Height="350" Name="GridSubscription" AutoGenerateColumns="False" CanUserAddRows="False" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Номер" Binding="{Binding subscriber_number}" Width="1*"></DataGridTextColumn>
-                        <DataGridTextColumn Header="ФИО" Binding="{Binding FIO}" Width="2*"></DataGridTextColumn>
+                        <DataGridTextColumn Header="ФИО" Binding="{Binding FIO}" Width="3*"></DataGridTextColumn>
                         <DataGridTextColumn Header="Номер договора" Binding="{Binding contract_number}" Width="2*"></DataGridTextColumn>
                         <DataGridTextColumn Header="ЛС" Binding="{Binding  personal_account}" Width="1*"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Услуги" Binding="{Binding  ListServices}" Width="2*"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Услуги" Binding="{Binding  ListServices}" Width="3*"></DataGridTextColumn>
                     </DataGrid.Columns>
                 </DataGrid>
             </StackPanel>

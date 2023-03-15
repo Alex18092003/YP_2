@@ -101,7 +101,7 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Classes\PartialClassEmployees.cs" />
-    <Compile Include="PartialClassSubscription.cs" />
+    <Compile Include="Classes\PartialClassSubscription.cs" />
     <Compile Include="Pols.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -224,6 +224,37 @@
     <Resource Include="resources\image.ico" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="resources\Фото для заглушки при отсутствии фото сотрудника.jpg" />
+    <Resource Include="Images\ID1516.jpg" />
+    <Resource Include="Images\ID1517.png" />
+    <Resource Include="Images\ID1518.png" />
+    <Resource Include="Images\ID1519.png" />
+    <Resource Include="Images\ID1520.png" />
+    <Resource Include="Images\ID1521.jpg" />
+    <Resource Include="Images\ID1522.png" />
+    <Resource Include="Images\ID1523.jpg" />
+    <Resource Include="Images\ID1524.jpg" />
+    <Resource Include="Images\ID1525.jpg" />
+    <Resource Include="Images\ID1526.jpg" />
+    <Content Include="Images\ID1527.jfif" />
+    <Resource Include="Images\ID1528.jpg" />
+    <Resource Include="Images\ID1529.jpg" />
+    <Resource Include="Images\ID1530.jpg" />
+    <Resource Include="Images\ID1531.jpg" />
+    <Resource Include="Images\ID1532.jpg" />
+    <Resource Include="Images\ID1533.jpg" />
+    <Resource Include="Images\ID1534.jpg" />
+    <Resource Include="Images\ID1535.png" />
+    <Resource Include="Images\ID1536.png" />
+    <Resource Include="Images\ID1537.jpg" />
+    <Resource Include="Images\ID1538.jpg" />
+    <Resource Include="Images\ID1539.png" />
+    <Resource Include="Images\ID1540.jpg" />
+    <Resource Include="Images\ID1541.jpg" />
+    <Resource Include="Images\ID1542.jpg" />
+    <Resource Include="Images\ID1543.jpg" />
+    <Resource Include="Images\ID1544.jpg" />
+    <Resource Include="Images\ID1545.jpg" />
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model1.Context.cs</LastGenOutput>
