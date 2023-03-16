@@ -22,7 +22,7 @@ namespace YP_2
         public int kod_service_view { get; set; }
         public int kod_service_type { get; set; }
         public int kod_statuse { get; set; }
-        public string type_equipment { get; set; }
+        public Nullable<int> type_equipment { get; set; }
         public Nullable<int> kod_description { get; set; }
         public Nullable<System.DateTime> closing_date { get; set; }
         public int kod_problem_types { get; set; }

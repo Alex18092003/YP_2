@@ -112,10 +112,7 @@
                     <TextBlock>Улица</TextBlock>
                     <ComboBox Name="ComboBoxYlitsa"></ComboBox>
                 </StackPanel>
-                <StackPanel Margin="10,0,0,0">
-                    <TextBlock>Номер дома</TextBlock>
-                    <ComboBox Name="ComboBoxDom"></ComboBox>
-                </StackPanel>
+                
                 <StackPanel Margin="10,0,0,0">
                     <TextBlock>ЛС</TextBlock>
                     <TextBox SelectionChanged="TextBoxLichSchet_SelectionChanged" Name="TextBoxLichSchet"></TextBox>

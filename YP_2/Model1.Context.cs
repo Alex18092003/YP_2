@@ -32,6 +32,7 @@ namespace YP_2
         public virtual DbSet<DescriptionsProblems> DescriptionsProblems { get; set; }
         public virtual DbSet<Districts> Districts { get; set; }
         public virtual DbSet<Employees> Employees { get; set; }
+        public virtual DbSet<EquiomentType> EquiomentType { get; set; }
         public virtual DbSet<Equipment> Equipment { get; set; }
         public virtual DbSet<Highways> Highways { get; set; }
         public virtual DbSet<InformationForEmployees> InformationForEmployees { get; set; }

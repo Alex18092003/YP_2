@@ -25,7 +25,7 @@
           <Property Name="kod_service_view" Type="int" Nullable="false" />
           <Property Name="kod_service_type" Type="int" Nullable="false" />
           <Property Name="kod_statuse" Type="int" Nullable="false" />
-          <Property Name="type_equipment" Type="nvarchar" MaxLength="50" />
+          <Property Name="type_equipment" Type="int" />
           <Property Name="kod_description" Type="int" />
           <Property Name="closing_date" Type="datetime" />
           <Property Name="kod_problem_types" Type="int" Nullable="false" />
@@ -75,6 +75,13 @@
           <Property Name="password" Type="int" />
           <Property Name="id_employees" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="photo" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="EquiomentType">
+          <Key>
+            <PropertyRef Name="kod_type" />
+          </Key>
+          <Property Name="kod_type" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Equipment">
           <Key>
@@ -315,6 +322,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_EquiomentType_Equipment">
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="1" />
+          <End Role="EquiomentType" Type="Self.EquiomentType" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Equipment">
+              <PropertyRef Name="kod_equipment" />
+            </Principal>
+            <Dependent Role="EquiomentType">
+              <PropertyRef Name="kod_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_InformationForEmployees_Employees">
           <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
           <End Role="InformationForEmployees" Type="Self.InformationForEmployees" Multiplicity="*" />
@@ -407,6 +426,7 @@
           <EntitySet Name="DescriptionsProblems" EntityType="Self.DescriptionsProblems" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Districts" EntityType="Self.Districts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EquiomentType" EntityType="Self.EquiomentType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Equipment" EntityType="Self.Equipment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Highways" EntityType="Self.Highways" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="InformationForEmployees" EntityType="Self.InformationForEmployees" Schema="dbo" store:Type="Tables" />
@@ -457,6 +477,10 @@
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Employees" EntitySet="Employees" />
           </AssociationSet>
+          <AssociationSet Name="FK_EquiomentType_Equipment" Association="Self.FK_EquiomentType_Equipment">
+            <End Role="Equipment" EntitySet="Equipment" />
+            <End Role="EquiomentType" EntitySet="EquiomentType" />
+          </AssociationSet>
           <AssociationSet Name="FK_InformationForEmployees_Employees" Association="Self.FK_InformationForEmployees_Employees">
             <End Role="Employees" EntitySet="Employees" />
             <End Role="InformationForEmployees" EntitySet="InformationForEmployees" />
@@ -498,6 +522,7 @@
           <EntitySet Name="DescriptionsProblems" EntityType="CRM12Model.DescriptionsProblems" />
           <EntitySet Name="Districts" EntityType="CRM12Model.Districts" />
           <EntitySet Name="Employees" EntityType="CRM12Model.Employees" />
+          <EntitySet Name="EquiomentType" EntityType="CRM12Model.EquiomentType" />
           <EntitySet Name="Equipment" EntityType="CRM12Model.Equipment" />
           <EntitySet Name="Highways" EntityType="CRM12Model.Highways" />
           <EntitySet Name="InformationForEmployees" EntityType="CRM12Model.InformationForEmployees" />
@@ -560,6 +585,10 @@
             <End Role="Employees" EntitySet="Employees" />
             <End Role="InformationForEmployees" EntitySet="InformationForEmployees" />
           </AssociationSet>
+          <AssociationSet Name="FK_EquiomentType_Equipment" Association="CRM12Model.FK_EquiomentType_Equipment">
+            <End Role="Equipment" EntitySet="Equipment" />
+            <End Role="EquiomentType" EntitySet="EquiomentType" />
+          </AssociationSet>
           <AssociationSet Name="FK_subscribers_Equipment" Association="CRM12Model.FK_subscribers_Equipment">
             <End Role="Equipment" EntitySet="Equipment" />
             <End Role="Subscribers" EntitySet="Subscribers" />
@@ -597,7 +626,7 @@
           <Property Name="kod_service_view" Type="Int32" Nullable="false" />
           <Property Name="kod_service_type" Type="Int32" Nullable="false" />
           <Property Name="kod_statuse" Type="Int32" Nullable="false" />
-          <Property Name="type_equipment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="type_equipment" Type="Int32" />
           <Property Name="kod_description" Type="Int32" />
           <Property Name="closing_date" Type="DateTime" Precision="3" />
           <Property Name="kod_problem_types" Type="Int32" Nullable="false" />
@@ -662,6 +691,14 @@
           <NavigationProperty Name="Roles" Relationship="CRM12Model.FK_Employees_Roles" FromRole="Employees" ToRole="Roles" />
           <NavigationProperty Name="InformationForEmployees" Relationship="CRM12Model.FK_InformationForEmployees_Employees" FromRole="Employees" ToRole="InformationForEmployees" />
         </EntityType>
+        <EntityType Name="EquiomentType">
+          <Key>
+            <PropertyRef Name="kod_type" />
+          </Key>
+          <Property Name="kod_type" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Equipment" Relationship="CRM12Model.FK_EquiomentType_Equipment" FromRole="EquiomentType" ToRole="Equipment" />
+        </EntityType>
         <EntityType Name="Equipment">
           <Key>
             <PropertyRef Name="kod_equipment" />
@@ -669,6 +706,7 @@
           <Property Name="kod_equipment" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="seria_number" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="EquiomentType" Relationship="CRM12Model.FK_EquiomentType_Equipment" FromRole="Equipment" ToRole="EquiomentType" />
           <NavigationProperty Name="Subscribers" Relationship="CRM12Model.FK_subscribers_Equipment" FromRole="Equipment" ToRole="Subscribers" />
         </EntityType>
         <EntityType Name="Highways">
@@ -955,6 +993,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_EquiomentType_Equipment">
+          <End Type="CRM12Model.Equipment" Role="Equipment" Multiplicity="1" />
+          <End Type="CRM12Model.EquiomentType" Role="EquiomentType" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Equipment">
+              <PropertyRef Name="kod_equipment" />
+            </Principal>
+            <Dependent Role="EquiomentType">
+              <PropertyRef Name="kod_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_subscribers_Equipment">
           <End Type="CRM12Model.Equipment" Role="Equipment" Multiplicity="1" />
           <End Type="CRM12Model.Subscribers" Role="Subscribers" Multiplicity="*" />
@@ -1084,6 +1134,14 @@
                 <ScalarProperty Name="surname" ColumnName="surname" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="kod_employee" ColumnName="kod_employee" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EquiomentType">
+            <EntityTypeMapping TypeName="CRM12Model.EquiomentType">
+              <MappingFragment StoreEntitySet="EquiomentType">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="kod_type" ColumnName="kod_type" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
