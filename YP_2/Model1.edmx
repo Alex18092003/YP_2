@@ -128,6 +128,7 @@
           </Key>
           <Property Name="kod_services" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="connection_date" Type="datetime" />
         </EntityType>
         <EntityType Name="ServicesTypes">
           <Key>
@@ -186,6 +187,7 @@
           <Property Name="kod" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="kod_subscriber" Type="int" Nullable="false" />
           <Property Name="kod_serveces" Type="int" Nullable="false" />
+          <Property Name="connection_date" Type="datetime" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -717,6 +719,7 @@
           </Key>
           <Property Name="kod_services" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="connection_date" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Applications" Relationship="CRM12Model.FK_Applications_Services" FromRole="Services" ToRole="Applications" />
           <NavigationProperty Name="SubscriberServices" Relationship="CRM12Model.FK_SubscriberServices_Services" FromRole="Services" ToRole="SubscriberServices" />
         </EntityType>
@@ -786,6 +789,7 @@
           <Property Name="kod" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="kod_subscriber" Type="Int32" Nullable="false" />
           <Property Name="kod_serveces" Type="Int32" Nullable="false" />
+          <Property Name="connection_date" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Services" Relationship="CRM12Model.FK_SubscriberServices_Services" FromRole="SubscriberServices" ToRole="Services" />
           <NavigationProperty Name="Subscribers" Relationship="CRM12Model.FK_SubscriberServices_Subscribers" FromRole="SubscriberServices" ToRole="Subscribers" />
         </EntityType>
@@ -999,7 +1003,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -1138,6 +1142,7 @@
           <EntitySetMapping Name="Services">
             <EntityTypeMapping TypeName="CRM12Model.Services">
               <MappingFragment StoreEntitySet="Services">
+                <ScalarProperty Name="connection_date" ColumnName="connection_date" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="kod_services" ColumnName="kod_services" />
               </MappingFragment>
@@ -1200,6 +1205,7 @@
           <EntitySetMapping Name="SubscriberServices">
             <EntityTypeMapping TypeName="CRM12Model.SubscriberServices">
               <MappingFragment StoreEntitySet="SubscriberServices">
+                <ScalarProperty Name="connection_date" ColumnName="connection_date" />
                 <ScalarProperty Name="kod_serveces" ColumnName="kod_serveces" />
                 <ScalarProperty Name="kod_subscriber" ColumnName="kod_subscriber" />
                 <ScalarProperty Name="kod" ColumnName="kod" />

@@ -8,26 +8,61 @@
       d:DesignHeight="600" d:DesignWidth="1000"
       Title="Информация об абоненте">
 
-    <Grid>
-        <StackPanel>
+    <Grid >
+        <ScrollViewer>
+        <StackPanel >
             <Button Name="ButtonBack" Click="ButtonBack_Click">Назад</Button>
-            <TextBlock Name="TextNomer"></TextBlock>
-            <TextBlock Name="FIO"></TextBlock>
-            <TextBlock Name="TextSeriesNomer"></TextBlock>
-            <TextBlock Name="TextDateOfIssue"></TextBlock>
-            <TextBlock Name="TextIssuesBy"></TextBlock>
-            <TextBlock Name="TextContractNumber"></TextBlock>
-            <TextBlock Name="TextDateConclusion"></TextBlock>
-            <TextBlock Name="TextContractType"></TextBlock>
-            <TextBlock Name="TextTerminationDate"></TextBlock>
-            <TextBlock Name="TextReason"></TextBlock>
-            <TextBlock Name="TextPersonalAccount"></TextBlock>
-            <TextBlock></TextBlock>
-            <TextBlock Name="TextServices"></TextBlock>
-            <TextBlock Name="TextServicesConnectionData"></TextBlock>
-            <TextBlock Name="TextEquipment"></TextBlock>
-            <TextBlock></TextBlock>
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0" HorizontalAlignment="Center">
+                <TextBlock FontSize="20" Name="TextNomer"></TextBlock>
+                <TextBlock FontSize="20" Margin="50,0,0,0" Name="FIO"></TextBlock>
+            </StackPanel>
+            
+            <TextBlock Margin="0,10,0,0" FontSize="25" HorizontalAlignment="Center">Паспортные данные</TextBlock>
+            <StackPanel Margin="0,10,0,0"  Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock FontSize="20" Name="TextSeriesNomer"></TextBlock>
+                <TextBlock FontSize="20" Margin="50,0,0,0" Name="TextDateOfIssue"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock FontSize="20" Name="TextIssuesBy"></TextBlock>
+            </StackPanel>
+
+            <TextBlock Margin="0,10,0,0" FontSize="25" HorizontalAlignment="Center">Договор</TextBlock>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock FontSize="20" Name="TextContractNumber"></TextBlock>
+                <TextBlock FontSize="20"  Margin="50,0,0,0" Name="TextDateConclusion"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock FontSize="20" Name="TextContractType"></TextBlock>
+                <TextBlock Margin="50,0,0,0"  FontSize="20"  Name="TextPersonalAccount"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock FontSize="20" Name="TextTerminationDate"></TextBlock>
+                <TextBlock Margin="50,0,0,0"  FontSize="20" Name="TextReason"></TextBlock>
+            </StackPanel>
+
+
+            <TextBlock Margin="0,10,0,0"  HorizontalAlignment="Center" FontSize="25">Адрес абонента</TextBlock>
+
+            <TextBlock Margin="0,10,0,0" HorizontalAlignment="Center" FontSize="25">Подключенные услуги</TextBlock>
+            <StackPanel Orientation="Horizontal" >
+                <TextBlock FontSize="20" Margin="50,0,0,0" Name="TextServices"></TextBlock>
+            </StackPanel>
+
+            <TextBlock Margin="0,10,0,0" HorizontalAlignment="Center" FontSize="25">Данные об оборудовании</TextBlock>
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                <TextBlock  FontSize="20" Name="TextEquipment"></TextBlock>
+            </StackPanel>
+
+            <TextBlock Margin="0,10,0,0" HorizontalAlignment="Center" FontSize="25">Данные об аренде/лизинге</TextBlock>
+            <StackPanel Orientation="Horizontal">
+               
+            </StackPanel>
+
+            <TextBlock Margin="0,10,0,0" HorizontalAlignment="Center" FontSize="25">История обращения</TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="20" Name="TextCRM"></TextBlock>
+            </StackPanel>
         </StackPanel>
-        
+        </ScrollViewer>
     </Grid>
 </Page>

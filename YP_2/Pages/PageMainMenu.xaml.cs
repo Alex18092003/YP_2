@@ -42,17 +42,25 @@ namespace YP_2
             }
             ComboBoxRaion.SelectedIndex = 0;
         }
-
+        int ii = 0;
         private void ComboEmployes_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Employees employees = ClassBase.entities.Employees.FirstOrDefault(x => x.kod_employee == ComboEmployes.SelectedIndex + 1);
-            //ImageEmployee.ImageSource = new BitmapImage(new Uri(employees.photo, UriKind.Relative));
+
             if (employees != null)
             {
-                
+                if (employees.photo != null)
+                {
+
+                    ImageEmployee.ImageSource = new BitmapImage(new Uri("" + employees.photo, UriKind.Relative));
+                }
+                else
+                {
+                    ImageEmployee.ImageSource = new BitmapImage(new Uri("..\\..\\resources\\Фото для заглушки при отсутствии фото сотрудника.jpg", UriKind.Relative));
+                }
                 List<InformationForEmployees> informationForEmployees = ClassBase.entities.InformationForEmployees.Where(x => x.kod_employees == employees.id_role).ToList();
                 ListEvents.ItemsSource = informationForEmployees.OrderBy(x => x.event_data);
-            
+                ii = informationForEmployees.Count;
             }
             if(employees.id_role == 1)
             {
@@ -96,11 +104,17 @@ namespace YP_2
                 ImgBilling.Visibility = Visibility.Collapsed;
                 ImgPodder.Visibility = Visibility.Collapsed;
             }
+
+            if (ii > 5)
+            {
+                ButtonFor.IsEnabled = true;
+                ButtonBac.IsEnabled = true;
+            }
         }
 
         private void ButtonBackward_MouseDown(object sender, MouseButtonEventArgs e)
         {
-
+            //ListEvents.ScrollToVerticalOffset(ListEvents.VerticalOffset - 1);
         }
 
         private void ButtonForward_MouseDown(object sender, MouseButtonEventArgs e)
@@ -176,6 +190,80 @@ namespace YP_2
             {
                 return;
             }
+        }
+
+        private void ButtonBac_Click(object sender, RoutedEventArgs e)
+        {
+ 
+        }
+
+        private void ImgAbon_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            ImgAbon.IsEnabled = false;
+            ImgObor.IsEnabled = true;
+            ImgActiv.IsEnabled = true;
+            ImgBilling.IsEnabled = true;
+            ImgPodder.IsEnabled = true;
+            ImgCRM.IsEnabled = true;
+            TextName.Text = "Абоненты ТНС";
+        }
+
+        private void ImgObor_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            ImgAbon.IsEnabled = true;
+            ImgObor.IsEnabled = false;
+            ImgActiv.IsEnabled = true;
+            ImgBilling.IsEnabled = true;
+            ImgPodder.IsEnabled = true;
+            ImgCRM.IsEnabled = true;
+            TextName.Text = "Управление оборудованием";
+        }
+
+        private void ImgActiv_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            ImgAbon.IsEnabled = true;
+            ImgObor.IsEnabled = true;
+            ImgActiv.IsEnabled = false;
+            ImgBilling.IsEnabled = true;
+            ImgPodder.IsEnabled = true;
+            ImgCRM.IsEnabled = true;
+            TextName.Text = "Активы";
+        }
+
+        private void ImgBilling_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            ImgAbon.IsEnabled = true;
+            ImgObor.IsEnabled = true;
+            ImgActiv.IsEnabled = true;
+            ImgBilling.IsEnabled = false;
+            ImgPodder.IsEnabled = true;
+            ImgCRM.IsEnabled = true;
+            TextName.Text = "Биллинг";
+        }
+
+        private void ImgPodder_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            ImgAbon.IsEnabled = true;
+            ImgObor.IsEnabled = true;
+            ImgActiv.IsEnabled = true;
+            ImgBilling.IsEnabled = true;
+            ImgPodder.IsEnabled = false;
+            ImgCRM.IsEnabled = true;
+            TextName.Text = "Поддержка пользователей";
+        }
+
+        private void ImgCRM_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            ImgAbon.IsEnabled = true;
+            ImgObor.IsEnabled = true;
+            ImgActiv.IsEnabled = true;
+            ImgBilling.IsEnabled = true;
+            ImgPodder.IsEnabled = true;
+            ImgCRM.IsEnabled = false;
+            TextName.Text = "CRM";
+            Windows.WindowCRM v = new Windows.WindowCRM();
+            v.ShowDialog();
+            ClassFrame.frame.Navigate(new PageMainMenu());
         }
     }
 }

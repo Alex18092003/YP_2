@@ -17,6 +17,7 @@ namespace YP_2
         public int kod { get; set; }
         public int kod_subscriber { get; set; }
         public int kod_serveces { get; set; }
+        public Nullable<System.DateTime> connection_date { get; set; }
     
         public virtual Services Services { get; set; }
         public virtual Subscribers Subscribers { get; set; }

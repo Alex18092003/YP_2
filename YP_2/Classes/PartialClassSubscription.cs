@@ -39,6 +39,31 @@ namespace YP_2
 
             }
         }
+        public string ListServices2
+        {
+            get
+            {
+                List<SubscriberServices> services = ClassBase.entities.SubscriberServices.Where(x => x.kod_subscriber == kod_subscribers).ToList();
+                string strServices = "";
+                for (int i = 0; i < services.Count; i++)
+                {
+                    if (i == services.Count - 1)
+                    {
+                        strServices = strServices + services[i].Services.name + " - " + Convert.ToDateTime(services[i].connection_date).ToString("d"); 
+                    }
+                    else
+                    {
+                        strServices = strServices + services[i].Services.name + " - " + Convert.ToDateTime(services[i].connection_date).ToString("d") + ", ";
+                    }
+                }
+                return strServices;
+            }
+            set
+            {
 
+            }
+        }
+
+       
     }
 }

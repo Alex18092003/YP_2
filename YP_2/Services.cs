@@ -23,6 +23,7 @@ namespace YP_2
     
         public int kod_services { get; set; }
         public string name { get; set; }
+        public Nullable<System.DateTime> connection_date { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Applications> Applications { get; set; }
