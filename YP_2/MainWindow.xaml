@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:YP_2"
         mc:Ignorable="d"
-        Title="ООО «Телеком Нева Связь»" Height="600" Width="1000"
+        Title="ООО «Телеком Нева Связь»" Height="620" Width="1000" MaxHeight="620" MinHeight="620" MaxWidth="1000" MinWidth="1000"
         Icon="/resources/image.ico">
     <Grid>
         <Frame x:Name="frame" NavigationUIVisibility="Hidden"></Frame>

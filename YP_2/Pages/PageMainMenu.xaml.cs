@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -41,7 +42,16 @@ namespace YP_2
                 ComboBoxRaion.Items.Add(district.district);
             }
             ComboBoxRaion.SelectedIndex = 0;
+
+            List<Subscribers> subscribers = ClassBase.entities.Subscribers.ToList();
+            ComboBoxYlitsa.Items.Add("Все улицы");
+            foreach (Subscribers subscribers1 in subscribers)
+            {
+                ComboBoxYlitsa.Items.Add(subscribers1.addres_of_residence.Substring(19));
+            }
+            ComboBoxYlitsa.SelectedIndex = 0;
         }
+
         int ii = 0;
         private void ComboEmployes_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -107,8 +117,8 @@ namespace YP_2
 
             if (ii > 5)
             {
-                ButtonFor.IsEnabled = true;
-                ButtonBac.IsEnabled = true;
+                //ButtonFor.IsEnabled = true;
+               // ButtonBac.IsEnabled = true;
             }
         }
 
@@ -122,22 +132,40 @@ namespace YP_2
 
         }
 
+        /// <summary>
+        /// Метод для поиска и фильтрации
+        /// </summary>
         public void Filter()
         {
             List<Subscribers> subscribers = new List<Subscribers>();
             //ListFilter = new List<Subscribers>();
             subscribers = ClassBase.entities.Subscribers.ToList();
 
-            if ((bool)CheckBoxActiv.IsChecked && (bool)CheckBoxNoActiv.IsChecked)
+            //активные неактивные
+            if (CheckBoxActiv.IsChecked == true && CheckBoxNoActiv.IsChecked == true)
             {
                 subscribers = ClassBase.entities.Subscribers.ToList();
             }
+            else if(CheckBoxActiv.IsChecked == true && CheckBoxNoActiv.IsChecked == false)
+            {
+                subscribers = ClassBase.entities.Subscribers.Where(x => x.reason_for_termination == null).ToList();
+            }
+            else if (CheckBoxActiv.IsChecked == false && CheckBoxNoActiv.IsChecked == true)
+            {
+                subscribers = ClassBase.entities.Subscribers.Where(x => x.reason_for_termination != null).ToList();
+            }
+            else
+            {
+                subscribers = new List<Subscribers>();
+            }
+
             //поиск
             if (!string.IsNullOrWhiteSpace(TextBoxSurname.Text))
             {
                 subscribers = subscribers.Where(x => x.surname.ToLower().Contains(TextBoxSurname.Text.ToLower())).ToList();
             }
 
+            //фильтрация по району
             if(ComboBoxRaion.SelectedIndex >0)
             {
                 Districts districts = ClassBase.entities.Districts.FirstOrDefault(x => x.district == ComboBoxRaion.SelectedValue);
@@ -147,8 +175,15 @@ namespace YP_2
             if(!string.IsNullOrWhiteSpace(TextBoxLichSchet.Text))
             {
                 subscribers = subscribers.Where(x => Convert.ToString(x.personal_account).ToLower().Contains(TextBoxLichSchet.Text.ToLower())).ToList();
-                //subscribers = subscribers.Where(x=> x.personal_account == Convert.ToInt32(TextBoxLichSchet.Text)).ToList();
-                //subscribers = subscribers.Where(x => x.personal_account.ToLower().Contains(TextBoxLichSchet.Text.ToLower())).ToList();
+               
+            }
+
+            //фильтрация по улице 
+            if (ComboBoxYlitsa.SelectedIndex > 0)
+            {
+               
+                subscribers = subscribers.Where(x => x.addres_of_residence.Substring(19) == ComboBoxYlitsa.SelectedItem.ToString()).ToList();
+               
             }
 
             GridSubscription.ItemsSource = subscribers;
@@ -161,7 +196,21 @@ namespace YP_2
 
         private void TextBoxSurname_TextChanged(object sender, TextChangedEventArgs e)
         {
-            Filter();
+            try
+            {
+                Filter();
+                if (TextBoxSurname.Text.Length == 1)
+                {
+                    TextBoxSurname.Text = TextBoxSurname.Text.ToUpper();
+                    TextBoxSurname.Select(TextBoxSurname.Text.Length, 0);
+                }
+               
+            }
+            catch
+            {
+                MessageBox.Show("Что-то пошло не так", "Ошибка");
+            }
+            
         }
 
         private void ComboBoxRaion_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -171,7 +220,9 @@ namespace YP_2
 
         private void TextBoxLichSchet_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            Filter();
+  
+                Filter();
+  
         }
 
         private void GridSubscription_MouseDown(object sender, MouseButtonEventArgs e)
@@ -264,6 +315,47 @@ namespace YP_2
             Windows.WindowCRM v = new Windows.WindowCRM();
             v.ShowDialog();
             ClassFrame.frame.Navigate(new PageMainMenu());
+        }
+
+        private void TextBoxSurname_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+
+            try
+            {
+                Regex r1 = new Regex("^[0-9]+");
+                e.Handled = r1.IsMatch(e.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Что-то пошло не так", "Ошибка");
+            }
+        }
+
+        private void TextBoxLichSchet_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            try
+            {
+                if (!Char.IsDigit(e.Text, 0)) e.Handled = true;
+            }
+            catch
+            {
+                MessageBox.Show("Что-то пошло не так", "Ошибка");
+            }
+        }
+
+        private void ComboBoxYlitsa_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Filter(); 
+        }
+
+        private void CheckBoxActiv_Checked(object sender, RoutedEventArgs e)
+        {
+            Filter();
+        }
+
+        private void CheckBoxNoActiv_Checked(object sender, RoutedEventArgs e)
+        {
+            Filter();
         }
     }
 }
