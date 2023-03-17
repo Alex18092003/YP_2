@@ -7,7 +7,8 @@
         xmlns:extensions="using:Microsoft.Toolkit.Uwp.UI.Extensions"
         mc:Ignorable="d"
         Icon="/resources/image.ico"
-        Title="Создание заявки" Height="450" Width="800">
+        Title="Создание заявки" Height="450" Width="800" MaxHeight="450" MaxWidth="800" MinHeight="450" MinWidth="800"
+        >
     <Grid>
         <ScrollViewer>
             <StackPanel>
