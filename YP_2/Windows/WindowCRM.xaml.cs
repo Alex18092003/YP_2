@@ -34,9 +34,11 @@ namespace YP_2.Windows
         }
 
         int kod;
+        /// <summary>
+        /// метод для идентификации абонента и авто заполнения полей 
+        /// </summary>
         private void Identific()
         {
-            //List<Subscribers> subscribers = new List<Subscribers>();
             if(Name.Text.Length != 0 && Password.Text.Length != 0)
             {
                 Subscribers subscribers1 = ClassBase.entities.Subscribers.FirstOrDefault(x => x.surname == Name.Text && x.phone == Password.Text);
@@ -51,41 +53,31 @@ namespace YP_2.Windows
                     TextData.Text = thisDay.ToString();
                     TextPhone.Text = subscribers1.subscriber_number;
                     TextLC.Text = Convert.ToString(subscribers1.personal_account);
-                    List<Services> services = ClassBase.entities.Services.ToList();
-                    foreach (Services services1 in services)
-                    {
-                        ComboServices.Items.Add(services1.name);
-                    }
-                    List<ServicesView> servicesViews = ClassBase.entities.ServicesView.ToList();
-                    foreach(ServicesView services1v in servicesViews)
-                    {
-                        ComboVidServ.Items.Add(services1v.name);
-                    }
-                    List<ServicesTypes> servicesTypes = ClassBase.entities.ServicesTypes.ToList();
-                    foreach (ServicesTypes servicesTypes1 in servicesTypes)
-                    {
-                        ComboTipServ.Items.Add(servicesTypes1.name);
-                    }
+
+                    ComboServices.ItemsSource = ClassBase.entities.Services.ToList();
+                    ComboServices.SelectedValuePath = "kod_services";
+                    ComboServices.DisplayMemberPath = "name";
+
+                    ComboVidServ.ItemsSource = ClassBase.entities.ServicesView.ToList();
+                    ComboVidServ.SelectedValuePath = "kod_service_view";
+                    ComboVidServ.DisplayMemberPath = "name";
+
+                    ComboTipServ.ItemsSource = ClassBase.entities.ServicesTypes.ToList();
+                    ComboTipServ.SelectedValuePath = "kod_service_type";
+                    ComboTipServ.DisplayMemberPath = "name";
+
                     Statuses statuses = ClassBase.entities.Statuses.FirstOrDefault(x => x.kod_status == 1);
                     ComboStatus.Text = Convert.ToString(statuses.name);
                     st = 1;
-                    //List<Statuses> statuses = ClassBase.entities.Statuses.ToList();
-                    //foreach (Statuses s in statuses)
-                    //{
-                    //    ComboStatus.Items.Add(s.name);
-                    //}
-                    //ComboStatus.SelectedIndex = 0;
-                    List<EquiomentType> equiomentTypes = ClassBase.entities.EquiomentType.ToList();
-                    foreach (EquiomentType equiomentType in equiomentTypes)
-                    {
-                        ComboTipObor.Items.Add(equiomentType.name);
-                    }
-                    List<ProblemTypes> problemTypes = ClassBase.entities.ProblemTypes.ToList();
-                    foreach (ProblemTypes problem in problemTypes)
-                    {
-                        ComboTipProblem.Items.Add(problem.name);
-                    }
-                    
+  
+                    ComboTipObor.ItemsSource = ClassBase.entities.EquiomentType.ToList();
+                    ComboTipObor.SelectedValuePath = "kod_type";
+                    ComboTipObor.DisplayMemberPath = "name";
+
+                    ComboTipProblem.ItemsSource = ClassBase.entities.ProblemTypes.ToList();
+                    ComboTipProblem.SelectedValuePath = "kod_type";
+                    ComboTipProblem.DisplayMemberPath = "name";
+ 
                 }
                 else
                 {
@@ -122,60 +114,63 @@ namespace YP_2.Windows
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            ////try
-            ////{
-            //    if (ComboServices.SelectedItem != null && ComboVidServ.SelectedItem != null && ComboTipServ.SelectedItem != null && ComboTipProblem.SelectedItem != null)
-            //    {
-            //    //Subscribers subscribers1 = ClassBase.entities.Subscribers.FirstOrDefault(x => x.surname == Name.Text && x.phone == Password.Text);
-            //    //if (subscribers1 != null)
-            //    //{
-            //    //    DateTime dateTime = DateTime.Now;
-            //    //    applications.number_applications = Convert.ToString(subscribers1.personal_account) + "/" + dateTime.ToString("dd") + "/" + dateTime.ToString("MM") + "/" + dateTime.ToString("yyyy");
-            //    //    DateTime thisDay = DateTime.Now;
-            //    //    applications.date_of_creation = thisDay;
-            //    //    applications.kod_subscribers = subscribers1.kod_subscribers;
-            //    //}
-            //    applications.number_applications = TextNumber.Text;
-            //    applications.date_of_creation = Convert.ToDateTime(TextData.SelectedDate);
-            //    applications.kod_subscribers = kod;
-            //    applications.kod_service = (int)ComboServices.SelectedValue;
-            //        applications.kod_service_view = (int)ComboVidServ.SelectedValue;
-            //        applications.kod_service_type = (int)ComboTipServ.SelectedValue;
-            //        applications.kod_statuse = st;
-            //        if (ComboTipObor.SelectedItem != null)
-            //        {
-            //            applications.type_equipment = (int)ComboTipObor.SelectedValue;
-            //        }
+            try
+            {
+                if (ComboServices.SelectedItem != null && ComboVidServ.SelectedItem != null && ComboTipServ.SelectedItem != null && ComboTipProblem.SelectedItem != null)
+            {
+                applications.number_applications = TextNumber.Text;
+                MessageBox.Show($"{TextNumber.Text}");
+                applications.date_of_creation = Convert.ToDateTime(TextData.SelectedDate);
+                MessageBox.Show($"{Convert.ToDateTime(TextData.SelectedDate)}");
+                applications.kod_subscribers = kod;
+                MessageBox.Show($"{kod}");
+                applications.kod_service = (int)ComboServices.SelectedValue;
+                MessageBox.Show($"{ComboServices.SelectedValue}");
+                applications.kod_service_view = (int)ComboVidServ.SelectedValue;
+                MessageBox.Show($"{(int)ComboVidServ.SelectedValue}");
+                applications.kod_service_type = (int)ComboTipServ.SelectedValue;
+                MessageBox.Show($"{(int)ComboTipServ.SelectedValue}");
+                applications.kod_statuse = st;
+                MessageBox.Show($"{st}");
 
-            //        applications.kod_problem_types = (int)ComboTipProblem.SelectedValue;
+                if (ComboTipObor.SelectedItem != null)
+                {
+                    applications.type_equipment = (int)ComboTipObor.SelectedValue;
+                    MessageBox.Show($"{(int)ComboTipObor.SelectedValue}");
+                }
 
-            //        if (TextDataClose.SelectedDate != null)
-            //        {
-            //            applications.closing_date = Convert.ToDateTime(TextDataClose.SelectedDate);
-            //        }
+                applications.kod_problem_types = (int)ComboTipProblem.SelectedValue;
+                MessageBox.Show($"{(int)ComboTipProblem.SelectedValue}");
+
+                if (TextDataClose.SelectedDate != null)
+                {
+                    applications.closing_date = Convert.ToDateTime(TextDataClose.SelectedDate);
+                    MessageBox.Show($"{Convert.ToDateTime(TextDataClose.SelectedDate)}");
+                }
 
 
-                   
-            //            applications.kod_description = null;
-                  
 
-            //        ClassBase.entities.Applications.Add(applications);
-            //        ClassBase.entities.SaveChanges();
-            //        MessageBox.Show("Заявка создана", "Сообщение");
-            //        this.Close();
+                applications.kod_description = null;
+                MessageBox.Show($"{null}");
 
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("Не все обязательные полязаполнены", "Сообщение");
-            //    }
-            ////}
 
-            ////catch
-            ////{
-            ////    MessageBox.Show("Что-то пошло не так", "Ошибка");
-            ////}
+                ClassBase.entities.Applications.Add(applications);
+                ClassBase.entities.SaveChanges();
+                MessageBox.Show("Заявка создана", "Сообщение");
+                this.Close();
+
+            }
+            else
+            {
+                MessageBox.Show("Не все обязательные полязаполнены", "Сообщение");
+            }
         }
+
+            catch
+            {
+                MessageBox.Show("Что-то пошло не так", "Ошибка");
+            }
+}
 
         //запрет ввода чисел
         private void Name_PreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -202,7 +197,7 @@ namespace YP_2.Windows
                 st = 3;
                 DateTime thisDay = DateTime.Now;
                 TextDataClose.Text = thisDay.ToString();
-                ButtonTest.IsEnabled = false;
+               // ButtonTest.IsEnabled = false;
             }
             else
             {
@@ -210,7 +205,7 @@ namespace YP_2.Windows
                 Statuses statuses = ClassBase.entities.Statuses.FirstOrDefault(x => x.kod_status == 2);
                 st = 2;
                 ComboStatus.Text = Convert.ToString(statuses.name);
-                ButtonTest.IsEnabled = false;
+              //  ButtonTest.IsEnabled = false;
             }
         }
     }
