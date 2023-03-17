@@ -24,7 +24,7 @@ namespace YP_2.Windows
         {
             InitializeComponent();
 
-      
+            applications = new Applications();
        
         }
 
@@ -33,7 +33,7 @@ namespace YP_2.Windows
             this.Close();
         }
 
-        //Subscribers s;
+        int kod;
         private void Identific()
         {
             //List<Subscribers> subscribers = new List<Subscribers>();
@@ -43,6 +43,7 @@ namespace YP_2.Windows
                 if(subscribers1 != null)
                 {
                     FIO.Text = subscribers1.FIO;
+                     kod = subscribers1.kod_subscribers;
                     ST.Visibility = Visibility.Visible;
                     DateTime dateTime = DateTime.Now;
                     TextNumber.Text = Convert.ToString( subscribers1.personal_account) + "/" + dateTime.ToString("dd")+ "/" + dateTime.ToString("MM") + "/" + dateTime.ToString("yyyy");
@@ -67,6 +68,7 @@ namespace YP_2.Windows
                     }
                     Statuses statuses = ClassBase.entities.Statuses.FirstOrDefault(x => x.kod_status == 1);
                     ComboStatus.Text = Convert.ToString(statuses.name);
+                    st = 1;
                     //List<Statuses> statuses = ClassBase.entities.Statuses.ToList();
                     //foreach (Statuses s in statuses)
                     //{
@@ -116,11 +118,65 @@ namespace YP_2.Windows
                 MessageBox.Show("Что-то пошло не так", "Ошибка");
             }
         }
+        Applications applications;
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
+            ////try
+            ////{
+            //    if (ComboServices.SelectedItem != null && ComboVidServ.SelectedItem != null && ComboTipServ.SelectedItem != null && ComboTipProblem.SelectedItem != null)
+            //    {
+            //    //Subscribers subscribers1 = ClassBase.entities.Subscribers.FirstOrDefault(x => x.surname == Name.Text && x.phone == Password.Text);
+            //    //if (subscribers1 != null)
+            //    //{
+            //    //    DateTime dateTime = DateTime.Now;
+            //    //    applications.number_applications = Convert.ToString(subscribers1.personal_account) + "/" + dateTime.ToString("dd") + "/" + dateTime.ToString("MM") + "/" + dateTime.ToString("yyyy");
+            //    //    DateTime thisDay = DateTime.Now;
+            //    //    applications.date_of_creation = thisDay;
+            //    //    applications.kod_subscribers = subscribers1.kod_subscribers;
+            //    //}
+            //    applications.number_applications = TextNumber.Text;
+            //    applications.date_of_creation = Convert.ToDateTime(TextData.SelectedDate);
+            //    applications.kod_subscribers = kod;
+            //    applications.kod_service = (int)ComboServices.SelectedValue;
+            //        applications.kod_service_view = (int)ComboVidServ.SelectedValue;
+            //        applications.kod_service_type = (int)ComboTipServ.SelectedValue;
+            //        applications.kod_statuse = st;
+            //        if (ComboTipObor.SelectedItem != null)
+            //        {
+            //            applications.type_equipment = (int)ComboTipObor.SelectedValue;
+            //        }
 
+            //        applications.kod_problem_types = (int)ComboTipProblem.SelectedValue;
+
+            //        if (TextDataClose.SelectedDate != null)
+            //        {
+            //            applications.closing_date = Convert.ToDateTime(TextDataClose.SelectedDate);
+            //        }
+
+
+                   
+            //            applications.kod_description = null;
+                  
+
+            //        ClassBase.entities.Applications.Add(applications);
+            //        ClassBase.entities.SaveChanges();
+            //        MessageBox.Show("Заявка создана", "Сообщение");
+            //        this.Close();
+
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Не все обязательные полязаполнены", "Сообщение");
+            //    }
+            ////}
+
+            ////catch
+            ////{
+            ////    MessageBox.Show("Что-то пошло не так", "Ошибка");
+            ////}
         }
+
         //запрет ввода чисел
         private void Name_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
@@ -134,7 +190,7 @@ namespace YP_2.Windows
                 MessageBox.Show("Что-то пошло не так", "Ошибка");
             }
         }
-
+        int st;
         private void ButtonTest_Click(object sender, RoutedEventArgs e)
         {
             Random rnd = new Random();
@@ -143,14 +199,18 @@ namespace YP_2.Windows
             {
                 Statuses statuses = ClassBase.entities.Statuses.FirstOrDefault(x => x.kod_status == 3);
                 ComboStatus.Text = Convert.ToString(statuses.name);
+                st = 3;
                 DateTime thisDay = DateTime.Now;
                 TextDataClose.Text = thisDay.ToString();
+                ButtonTest.IsEnabled = false;
             }
             else
             {
 
                 Statuses statuses = ClassBase.entities.Statuses.FirstOrDefault(x => x.kod_status == 2);
+                st = 2;
                 ComboStatus.Text = Convert.ToString(statuses.name);
+                ButtonTest.IsEnabled = false;
             }
         }
     }

@@ -11,12 +11,12 @@
     <Grid>
         <ScrollViewer>
             <StackPanel>
-                <Button Name="ButtonBack" Click="ButtonBack_Click">Назад</Button>
+                <Button Foreground="#4A67F7" Background="#B5DEFA" HorizontalAlignment="Left" Margin="50,40,0,0" Height="30" Width="150" FontSize="15" Template="{StaticResource ResourceKey=CTButonMainPage}" Name="ButtonBack" Click="ButtonBack_Click">Назад</Button>
                 
                 <StackPanel Margin="0,10,0,0" Orientation="Horizontal" HorizontalAlignment="Center">
                     <StackPanel>
-                        
-                        <TextBlock Margin="0,10,0,0" FontSize="15" >Номер телефона*:</TextBlock>
+
+                        <TextBlock Foreground="#4A67F7" Margin="0,10,0,0" FontSize="15" >Номер телефона*:</TextBlock>
                         <TextBox 
                                FontSize="15"
                                  Height="23" Width="250" TextChanged="Password_TextChanged" Name="Password">
@@ -24,7 +24,7 @@
                         </TextBox>
                     </StackPanel>
                     <StackPanel Margin="20,0,0,0">
-                        <TextBlock Margin="0,10,0,0" FontSize="15" >Фамилия*:</TextBlock>
+                        <TextBlock Foreground="#4A67F7" Margin="0,10,0,0" FontSize="15" >Фамилия*:</TextBlock>
                         <TextBox FontSize="15" PreviewTextInput="Name_PreviewTextInput" Height="23" Width="250" TextChanged="Name_TextChanged" Name="Name">
 
                         </TextBox>
@@ -33,8 +33,8 @@
                 
                 <TextBlock HorizontalAlignment="Center" Margin="0,10,0,0" FontSize="20" Name="FIO" ></TextBlock>
                 
-                <StackPanel Name="ST" >
-                    <TextBlock HorizontalAlignment="Center" Margin="0,10,0,0" FontSize="25" >Создание заявки</TextBlock>
+                <StackPanel Name="ST" Visibility="Collapsed">
+                    <TextBlock  Foreground="#4A67F7" HorizontalAlignment="Center" Margin="0,10,0,0" FontSize="25" >Создание заявки</TextBlock>
                     <StackPanel Margin="0,10,0,0" Orientation="Horizontal" HorizontalAlignment="Center">
                         <StackPanel>
                             <TextBlock FontSize="15">Номер заявки:</TextBlock>
@@ -42,7 +42,7 @@
                         </StackPanel>
                         <StackPanel Margin="10,0,0,0">
                             <TextBlock FontSize="15">Дата создания:</TextBlock>
-                            <DatePicker FontSize="15" Name="TextData" IsEnabled="False"  Height="25" Width="160"></DatePicker>
+                            <DatePicker FontSize="15" Name="TextData" IsEnabled="False"  Height="28" Width="160"></DatePicker>
                         </StackPanel>
                         <StackPanel Margin="10,0,0,0">
                             <TextBlock FontSize="15">Номер абонента:</TextBlock>
@@ -90,20 +90,26 @@
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <StackPanel>
                             <TextBlock  FontSize="15">Описание проблемы:</TextBlock>
-                            <TextBox TextWrapping="Wrap"  FontSize="15" Name="TextProblem" Height="25" Width="150"></TextBox>
+                            <TextBox TextWrapping="Wrap"  FontSize="15" Name="TextProblem" Height="50" Width="180"></TextBox>
                         </StackPanel>
                         <StackPanel Margin="70,0,0,0">
                             <TextBlock   FontSize="15">Дата закрытия:</TextBlock>
-                            <DatePicker IsEnabled="False"  FontSize="15" Name="TextDataClose"  Height="25" Width="160"></DatePicker>
+                            <DatePicker IsEnabled="False"  FontSize="15" Name="TextDataClose"  Height="28" Width="160"></DatePicker>
                         </StackPanel>
-                        <Button Name="ButtonTest" Click="ButtonTest_Click">Протестировать</Button>
+                        
+                        <Button  Margin="20,0,0,0" Foreground="#4A67F7" Background="#B5DEFA" HorizontalAlignment="Left" Height="30" Width="150" FontSize="15" Template="{StaticResource ResourceKey=CTButonMainPage}" Name="ButtonTest" Click="ButtonTest_Click">Протестировать</Button>
                     </StackPanel>
-                   
-                   
-                    
-                   
-                   
-                    <Button Name="ButtonAdd" Click="ButtonAdd_Click"></Button>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <TextBlock  FontSize="15" Name="SMS" Foreground="#4A67F7"></TextBlock>
+                    </StackPanel >
+
+
+
+
+
+                    <Button 
+                        HorizontalAlignment="Center" Foreground="#4A67F7" Background="#B5DEFA"  Margin="0,20,0,30" Height="40" Width="150" FontSize="20" Template="{StaticResource ResourceKey=CTButonMainPage}" Name="ButtonAdd" Click="ButtonAdd_Click">Создать</Button>
                 </StackPanel>
 
                
