@@ -138,24 +138,22 @@ namespace YP_2.Windows
                 if (ComboTipObor.SelectedItem != null)
                 {
                     applications.type_equipment = (int)ComboTipObor.SelectedValue;
-                    MessageBox.Show($"{(int)ComboTipObor.SelectedValue}");
+                   
                 }
 
                 applications.kod_problem_types = (int)ComboTipProblem.SelectedValue;
-                MessageBox.Show($"{(int)ComboTipProblem.SelectedValue}");
+               
 
                 if (TextDataClose.SelectedDate != null)
                 {
                     applications.closing_date = Convert.ToDateTime(TextDataClose.SelectedDate);
-                    MessageBox.Show($"{Convert.ToDateTime(TextDataClose.SelectedDate)}");
+                   
                 }
 
 
 
                 applications.kod_description = null;
-                MessageBox.Show($"{null}");
-
-
+              
                 ClassBase.entities.Applications.Add(applications);
                 ClassBase.entities.SaveChanges();
                 MessageBox.Show("Заявка создана", "Сообщение");
@@ -191,8 +189,7 @@ namespace YP_2.Windows
 
         private async void ButtonTest_Click(object sender, RoutedEventArgs e)
         {
-            //Windows.WindowProgressBar v = new Windows.WindowProgressBar();
-            //v.ShowDialog();
+
             dd.Visibility = Visibility.Visible;
             for (int i = 0; i < 101; i++)
             {
@@ -201,18 +198,7 @@ namespace YP_2.Windows
             }
 
             Random rnd = new Random();
-
-            //ProgressBar bar = new ProgressBar();
-            //bar.Height = 10;
-            //Duration duration = new Duration(TimeSpan.FromMilliseconds(1));
-            //DoubleAnimation doubleAnimation = new DoubleAnimation(100, duration);
-            //doubleAnimation.BeginAnimation(ProgressBar.ValueProperty, doubleAnimation);
-            // SP.Children.Add(bar);
-
-            //Thread.Sleep(10000);
-            int ii = rnd.Next(2);
-            //if (PB1.Value == 99)
-            //{
+            int ii = rnd.Next(3);
                 if (ii == 1)
                 {
                     Statuses statuses = ClassBase.entities.Statuses.FirstOrDefault(x => x.kod_status == 3);
@@ -233,7 +219,6 @@ namespace YP_2.Windows
                     ButtonTest.IsEnabled = false;
                 dd.Visibility = Visibility.Collapsed;
             }
-            //}
         }
 
         //запрет ввода символов

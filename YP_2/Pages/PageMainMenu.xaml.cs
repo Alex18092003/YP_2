@@ -118,7 +118,7 @@ namespace YP_2
 
         private void ButtonBackward_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            //ListEvents.ScrollToVerticalOffset(ListEvents.VerticalOffset - 1);
+           
         }
 
         private void ButtonForward_MouseDown(object sender, MouseButtonEventArgs e)
@@ -132,7 +132,7 @@ namespace YP_2
         public void Filter()
         {
             List<Subscribers> subscribers = new List<Subscribers>();
-            //ListFilter = new List<Subscribers>();
+
             subscribers = ClassBase.entities.Subscribers.ToList();
 
             //активные неактивные

@@ -144,9 +144,6 @@
     <Compile Include="Windows\WindowCRM.xaml.cs">
       <DependentUpon>WindowCRM.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\WindowProgressBar.xaml.cs">
-      <DependentUpon>WindowProgressBar.xaml</DependentUpon>
-    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -169,10 +166,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\WindowCRM.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\WindowProgressBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

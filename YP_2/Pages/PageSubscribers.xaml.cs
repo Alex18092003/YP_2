@@ -56,7 +56,7 @@ namespace YP_2
             int ii = 1;
             for(int i = 0; i< applications.Count; i++)
             {
-                if (i == applications.Count - 1) // Если последний элемент, то пробелы в конце не ставим
+                if (i == applications.Count - 1) 
                 {
                     TextCRM.Text = TextCRM.Text + "Номер " + $"{ii++}" + "\n";
                     TextCRM.Text = TextCRM.Text + "Номер заявки " + applications[i].number_applications + "\n";
