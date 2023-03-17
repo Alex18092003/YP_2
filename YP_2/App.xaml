@@ -26,5 +26,11 @@
             <Setter Property="FontFamily" Value="Comic Sans MS"></Setter>
             <Setter Property="Background" Value="#B5DEFA"></Setter>
         </Style>
+        
+        <ControlTemplate x:Key="CTButonMainPage" TargetType="Button">
+            <Border CornerRadius="20" BorderBrush="#B5DEFA" BorderThickness="1" Background="{TemplateBinding Background}">
+                <ContentControl Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+        </ControlTemplate>
     </Application.Resources>
 </Application>

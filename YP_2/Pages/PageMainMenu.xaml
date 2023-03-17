@@ -55,13 +55,9 @@
         <StackPanel  Orientation="Horizontal" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2">
 
             <TextBlock FontSize="30" VerticalAlignment="Center" Margin="10,0,0,0" Name="TextName">Абоненты ТНС</TextBlock>
-            <StackPanel Orientation="Horizontal" Margin="320,0,0,0">
+            <StackPanel Orientation="Horizontal" Margin="100,0,0,0">
                 <ComboBox HorizontalAlignment="Right"   FontSize="14"  SelectionChanged="ComboEmployes_SelectionChanged" Height="28" Width="250" x:Name="ComboEmployes"/>
-                <Rectangle Margin="20,0,0,0" RadiusX="100" RadiusY="100"  Width="50" Height="50" >
-                    <Rectangle.Fill>
-                        <ImageBrush x:Name="ImageEmployee"  Stretch="UniformToFill" />
-                    </Rectangle.Fill>
-                </Rectangle>
+                
             </StackPanel>
                
            
@@ -71,6 +67,13 @@
 
         <StackPanel Grid.Row="0" Grid.Column="2" VerticalAlignment="Bottom">
 
+            <StackPanel VerticalAlignment="Center">
+                <Rectangle HorizontalAlignment="Right" Margin="0,0,50,30" RadiusX="100" RadiusY="100"  Width="50" Height="50" >
+                    <Rectangle.Fill>
+                        <ImageBrush x:Name="ImageEmployee"  Stretch="UniformToFill" />
+                    </Rectangle.Fill>
+                </Rectangle>
+            </StackPanel>
             <StackPanel Background="#B5DEFA">
                 <TextBlock FontSize="20" HorizontalAlignment="Center">События</TextBlock>
             </StackPanel>

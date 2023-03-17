@@ -49,12 +49,28 @@ namespace YP_2
                 {
                     if (i == services.Count - 1)
                     {
-                        strServices = strServices + services[i].Services.name + " - " + Convert.ToDateTime(services[i].connection_date).ToString("d"); 
+                        if (services[i].connection_date != null)
+                        {
+
+                            strServices = strServices + services[i].Services.name + " - " + Convert.ToDateTime(services[i].connection_date).ToString("d");
+                        }
+                        else
+                        {
+                            strServices = strServices + services[i].Services.name;
+                        }
                     }
                     else
                     {
-                        strServices = strServices + services[i].Services.name + " - " + Convert.ToDateTime(services[i].connection_date).ToString("d") + ", ";
-                    }
+                        if (services[i].connection_date != null)
+                        {
+                            strServices = strServices + services[i].Services.name + " - " + Convert.ToDateTime(services[i].connection_date).ToString("d") + ", ";
+                        }
+                        else
+                        {
+                            strServices = strServices + services[i].Services.name + ", ";
+                        }
+                    
+                }
                 }
                 return strServices;
             }

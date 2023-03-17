@@ -45,21 +45,23 @@ namespace YP_2
             
             TextPersonalAccount.Text = "Лицевой счет: " + Convert.ToString(subscribers.personal_account);
 
+            TextAddress.Text = "Полный адрес: " + Convert.ToString(subscribers.place_of_residence.Substring(8));
+            TextDis.Text = "Район: " + Convert.ToString(subscribers.Districts.district);
+
             TextServices.Text = Convert.ToString(subscribers.ListServices2);
             TextEquipment.Text = Convert.ToString(subscribers.Equipment.name);
 
             DateTime dateTime = DateTime.Now.AddMonths(-12); 
             List<Applications> applications = ClassBase.entities.Applications.Where(x => x.kod_subscribers == subscribers.kod_subscribers && x.date_of_creation >= dateTime).ToList();
+            int ii = 1;
             for(int i = 0; i< applications.Count; i++)
             {
                 if (i == applications.Count - 1) // Если последний элемент, то пробелы в конце не ставим
                 {
+                    TextCRM.Text = TextCRM.Text + "Номер " + $"{ii++}" + "\n";
                     TextCRM.Text = TextCRM.Text + "Номер заявки " + applications[i].number_applications + "\n";
                     TextCRM.Text = TextCRM.Text + "Дата создания: " + applications[i].date_of_creation.ToString("d") + "\n";
-                    if (applications[i].closing_date != null)
-                    {
-                        TextCRM.Text = TextCRM.Text + "Дата закрытия: " + Convert.ToDateTime(applications[i].closing_date).ToString("d") + "\n";
-                    }
+                    
                     TextCRM.Text = TextCRM.Text + "Услуга: " + applications[i].Services.name + "\n";
                     TextCRM.Text = TextCRM.Text + "Вид услуги: " + applications[i].ServicesView.name + "\n";
                     TextCRM.Text = TextCRM.Text + "Тип услуги: " + applications[i].ServicesTypes.name + "\n";
@@ -68,16 +70,18 @@ namespace YP_2
                     {
                         TextCRM.Text = TextCRM.Text + "Описание проблемы: " + applications[i].DescriptionsProblems.name + "\n";
                     }
+                    if (applications[i].closing_date != null)
+                    {
+                        TextCRM.Text = TextCRM.Text + "Дата закрытия: " + Convert.ToDateTime(applications[i].closing_date).ToString("d") + "\n";
+                    }
                     TextCRM.Text = TextCRM.Text + "Статус: " + applications[i].Statuses.name;
                 }
                 else
                 {
+                    TextCRM.Text = TextCRM.Text + "Номер " + $"{ii++}" + "\n";
                     TextCRM.Text = TextCRM.Text + "Номер заявки " + applications[i].number_applications + "\n";
                     TextCRM.Text = TextCRM.Text + "Дата создания: " + applications[i].date_of_creation + "\n";
-                    if (applications[i].closing_date != null)
-                    {
-                        TextCRM.Text = TextCRM.Text + "Дата закрытия: " + applications[i].closing_date + "\n";
-                    }
+                    
                     TextCRM.Text = TextCRM.Text + "Услуга: " + applications[i].Services.name + "\n";
                     TextCRM.Text = TextCRM.Text + "Вид услуги: " + applications[i].ServicesView.name + "\n";
                     TextCRM.Text = TextCRM.Text + "Тип услуги: " + applications[i].ServicesTypes.name + "\n";
@@ -85,6 +89,10 @@ namespace YP_2
                     if (applications[i].kod_description != null)
                     {
                         TextCRM.Text = TextCRM.Text + "Описание проблемы: " + applications[i].DescriptionsProblems.name;
+                    }
+                    if (applications[i].closing_date != null)
+                    {
+                        TextCRM.Text = TextCRM.Text + "Дата закрытия: " + applications[i].closing_date + "\n";
                     }
                     TextCRM.Text = TextCRM.Text + "Статус: " + applications[i].Statuses.name + "\n\n";
                 }
