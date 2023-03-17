@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -10,6 +11,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
@@ -119,19 +121,19 @@ namespace YP_2.Windows
                 if (ComboServices.SelectedItem != null && ComboVidServ.SelectedItem != null && ComboTipServ.SelectedItem != null && ComboTipProblem.SelectedItem != null)
             {
                 applications.number_applications = TextNumber.Text;
-                MessageBox.Show($"{TextNumber.Text}");
+
                 applications.date_of_creation = Convert.ToDateTime(TextData.SelectedDate);
-                MessageBox.Show($"{Convert.ToDateTime(TextData.SelectedDate)}");
+  
                 applications.kod_subscribers = kod;
-                MessageBox.Show($"{kod}");
+
                 applications.kod_service = (int)ComboServices.SelectedValue;
-                MessageBox.Show($"{ComboServices.SelectedValue}");
+
                 applications.kod_service_view = (int)ComboVidServ.SelectedValue;
-                MessageBox.Show($"{(int)ComboVidServ.SelectedValue}");
+
                 applications.kod_service_type = (int)ComboTipServ.SelectedValue;
-                MessageBox.Show($"{(int)ComboTipServ.SelectedValue}");
+           
                 applications.kod_statuse = st;
-                MessageBox.Show($"{st}");
+ 
 
                 if (ComboTipObor.SelectedItem != null)
                 {
@@ -186,26 +188,68 @@ namespace YP_2.Windows
             }
         }
         int st;
-        private void ButtonTest_Click(object sender, RoutedEventArgs e)
-        {
-            Random rnd = new Random();
-            int ii = rnd.Next(2);
-            if(ii == 1)
-            {
-                Statuses statuses = ClassBase.entities.Statuses.FirstOrDefault(x => x.kod_status == 3);
-                ComboStatus.Text = Convert.ToString(statuses.name);
-                st = 3;
-                DateTime thisDay = DateTime.Now;
-                TextDataClose.Text = thisDay.ToString();
-               // ButtonTest.IsEnabled = false;
-            }
-            else
-            {
 
-                Statuses statuses = ClassBase.entities.Statuses.FirstOrDefault(x => x.kod_status == 2);
-                st = 2;
-                ComboStatus.Text = Convert.ToString(statuses.name);
-              //  ButtonTest.IsEnabled = false;
+        private async void ButtonTest_Click(object sender, RoutedEventArgs e)
+        {
+            //Windows.WindowProgressBar v = new Windows.WindowProgressBar();
+            //v.ShowDialog();
+            dd.Visibility = Visibility.Visible;
+            for (int i = 0; i < 101; i++)
+            {
+                await Task.Delay(50);
+                PB1.Value++;
+            }
+
+            Random rnd = new Random();
+
+            //ProgressBar bar = new ProgressBar();
+            //bar.Height = 10;
+            //Duration duration = new Duration(TimeSpan.FromMilliseconds(1));
+            //DoubleAnimation doubleAnimation = new DoubleAnimation(100, duration);
+            //doubleAnimation.BeginAnimation(ProgressBar.ValueProperty, doubleAnimation);
+            // SP.Children.Add(bar);
+
+            //Thread.Sleep(10000);
+            int ii = rnd.Next(2);
+            //if (PB1.Value == 99)
+            //{
+                if (ii == 1)
+                {
+                    Statuses statuses = ClassBase.entities.Statuses.FirstOrDefault(x => x.kod_status == 3);
+                    ComboStatus.Text = Convert.ToString(statuses.name);
+                    st = 3;
+                    DateTime thisDay = DateTime.Now;
+                    TextDataClose.Text = thisDay.ToString();
+                    ButtonTest.IsEnabled = false;
+                    MessageBox.Show("Оборудование исправно", "Сообщение");
+                dd.Visibility = Visibility.Collapsed;
+            }
+                else
+                {
+
+                    Statuses statuses = ClassBase.entities.Statuses.FirstOrDefault(x => x.kod_status == 2);
+                    st = 2;
+                    ComboStatus.Text = Convert.ToString(statuses.name);
+                    ButtonTest.IsEnabled = false;
+                dd.Visibility = Visibility.Collapsed;
+            }
+            //}
+        }
+
+        //запрет ввода символов
+        private void Password_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            try
+            {
+                if (!(Char.IsDigit(e.Text, 0) || (e.Text == "(") || (e.Text == ")") || (e.Text == "+") ||(e.Text == "-")))
+                {
+                    e.Handled = true;
+                }
+                     
+            }
+            catch
+            {
+                MessageBox.Show("Что-то пошло не так", "Ошибка");
             }
         }
     }

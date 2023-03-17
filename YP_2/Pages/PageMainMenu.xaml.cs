@@ -114,12 +114,6 @@ namespace YP_2
                 ImgBilling.Visibility = Visibility.Collapsed;
                 ImgPodder.Visibility = Visibility.Collapsed;
             }
-
-            if (ii > 5)
-            {
-                //ButtonFor.IsEnabled = true;
-               // ButtonBac.IsEnabled = true;
-            }
         }
 
         private void ButtonBackward_MouseDown(object sender, MouseButtonEventArgs e)
@@ -193,7 +187,7 @@ namespace YP_2
             }
         }
 
-
+        // ввод первой заглавной буквы
         private void TextBoxSurname_TextChanged(object sender, TextChangedEventArgs e)
         {
             try
@@ -317,6 +311,7 @@ namespace YP_2
             ClassFrame.frame.Navigate(new PageMainMenu());
         }
 
+        // запрет ввода чисел
         private void TextBoxSurname_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
 
@@ -331,6 +326,7 @@ namespace YP_2
             }
         }
 
+        //запрет ввода символов
         private void TextBoxLichSchet_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             try
